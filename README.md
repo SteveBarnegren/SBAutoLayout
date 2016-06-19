@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SBAutoLayout)
 [![Platform](https://img.shields.io/cocoapods/p/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SBAutoLayout)
 
-Make common autolayout operations less verbose.
+SBAutoLayout makes it easy to perform common auto layout operations without having to write verbose auto layout syntax.
 
 Better readme, documentation and screenshots are coming soon, I promise!
 
@@ -19,7 +19,9 @@ pod "SBAutoLayout"
 
 ## Author
 
-Steve Barnegren, steve.barnegren@himumsaiddad.com
+Steve Barnegren, steve.barnegren@gmail.com
+
+Follow me on twitter [@SteveBarnegren](https://twitter.com/stevebarnegren)
 
 ## License
 
