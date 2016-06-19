@@ -12,7 +12,9 @@ import UIKit
 extension UIView{
     
     // MARK: - Pin Width / Height
+    
     public func pinWidth(width: CGFloat) -> NSLayoutConstraint{
+        
         translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint.init(item: self,
@@ -27,6 +29,7 @@ extension UIView{
     }
     
     public func pinHeight(height: CGFloat) -> NSLayoutConstraint{
+        
         translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint.init(item: self,
@@ -203,6 +206,8 @@ extension UIView{
     
     public func matchAttributeToSuperview(attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint{
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         let constraint = NSLayoutConstraint(item: self,
                                             attribute: attribute,
                                             relatedBy: .Equal,
@@ -219,6 +224,8 @@ extension UIView{
 
     public func pinViewsVertically(topView topView: UIView, bottomView: UIView, separation: CGFloat) -> NSLayoutConstraint{
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         let constraint = NSLayoutConstraint(item: topView,
                                             attribute: .Bottom,
                                             relatedBy: .Equal,
@@ -231,6 +238,8 @@ extension UIView{
     }
     
     public func pinViewsHorizonally(leadingView leadingView: UIView, trailingView: UIView, separation: CGFloat) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: leadingView,
                                             attribute: .Trailing,
@@ -245,6 +254,8 @@ extension UIView{
     
     public func pinViewsHorizonally(leftView leftView: UIView, rightView: UIView, separation: CGFloat) -> NSLayoutConstraint{
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         let constraint = NSLayoutConstraint(item: leftView,
                                             attribute: .Right,
                                             relatedBy: .Equal,
@@ -258,6 +269,8 @@ extension UIView{
     
     public func pinViewsWidthToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         let constraint = NSLayoutConstraint(item: firstView,
                                             attribute: .Width,
                                             relatedBy: .Equal,
@@ -270,6 +283,8 @@ extension UIView{
     }
     
     public func pinViewsHeightToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: firstView,
                                             attribute: .Height,
