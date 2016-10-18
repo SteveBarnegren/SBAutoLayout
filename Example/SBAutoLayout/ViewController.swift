@@ -39,13 +39,13 @@ class ViewController: UIViewController {
         var items = [ExampleItem]()
         
         items.append(
-            ExampleItem(layoutActions: [
+            ExampleItem(textPosition: .center, layoutActions: [
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperViewEdges)
                 ])
         )
         
         items.append(
-            ExampleItem(layoutActions: [
+            ExampleItem(textPosition: .center, layoutActions: [
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewTop(margin: 40)),
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewBottom(margin: 40)),
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewLeft(margin: 20)),
@@ -54,25 +54,25 @@ class ViewController: UIViewController {
         )
         
         items.append(
-            ExampleItem(layoutActions: [
+            ExampleItem(textPosition: .belowView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsTopStrip(height: 50)),
                 ])
         )
         
         items.append(
-            ExampleItem(layoutActions: [
+            ExampleItem(textPosition: .aboveView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsBottomStrip(height: 150)),
                 ])
         )
         
         items.append(
-            ExampleItem(layoutActions: [
+            ExampleItem(textPosition: .rightOfView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsLeftStrip(width: 15)),
                 ])
         )
         
         items.append(
-            ExampleItem(layoutActions: [
+            ExampleItem(textPosition: .leftOfView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsRightStrip(width: 60)),
                 ])
         )

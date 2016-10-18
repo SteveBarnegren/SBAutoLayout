@@ -12,6 +12,7 @@ class ExampleCell: UICollectionViewCell {
     
     let label = UILabel()
     var views = [Int:UIView]()
+    var textPosition: ExampleItem.TextPosition = .center
     
     override init(frame: CGRect) {
         
@@ -34,7 +35,62 @@ class ExampleCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        label.frame = contentView.bounds
+        switch textPosition {
+        case .center:
+            label.frame = contentView.bounds
+        case .aboveView(let viewNumber):
+            if let view = views[viewNumber] {
+                positionLabelAboveView(view)
+            }
+        case .belowView(let viewNumber):
+            if let view = views[viewNumber] {
+                positionLabelBelowView(view)
+            }
+        case .leftOfView(let viewNumber):
+            if let view = views[viewNumber] {
+                positionLabelToLeftOfView(view)
+            }
+        case .rightOfView(let viewNumber):
+            if let view = views[viewNumber] {
+                positionLabelToRightOfView(view)
+            }
+        }
+    }
+    
+    func positionLabelAboveView(_ view: UIView) {
+    
+        let viewTop = view.frame.origin.y
+        label.frame = CGRect(x: 0,
+                             y: 0,
+                             width: contentView.bounds.size.width,
+                             height: viewTop)
+    }
+    
+    func positionLabelBelowView(_ view: UIView) {
+        
+        let viewBottom = view.frame.origin.y + view.frame.size.height
+        label.frame = CGRect(x: 0,
+                             y: viewBottom,
+                             width: contentView.bounds.size.width,
+                             height: contentView.bounds.size.height - viewBottom)
+    }
+    
+    func positionLabelToLeftOfView(_ view: UIView) {
+        
+        let viewStartX = view.frame.origin.x
+        label.frame = CGRect(x: 0,
+                             y: 0,
+                             width: viewStartX,
+                             height: contentView.bounds.size.height)
+    }
+    
+    func positionLabelToRightOfView(_ view: UIView) {
+        
+        let viewEndX = view.frame.origin.x + view.frame.size.width
+        label.frame = CGRect(x: viewEndX,
+                             y: 0,
+                             width: contentView.bounds.size.width - viewEndX,
+                             height: contentView.bounds.size.height)
     }
     
     func configureWithItem(item: ExampleItem) {
@@ -60,8 +116,11 @@ class ExampleCell: UICollectionViewCell {
             
         }
         
+        textPosition = item.textPosition
         label.text = item.text
         label.superview?.bringSubview(toFront: label)
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
 }

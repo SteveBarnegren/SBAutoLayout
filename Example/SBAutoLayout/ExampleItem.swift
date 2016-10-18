@@ -98,7 +98,16 @@ struct AutoLayoutAction {
 
 struct ExampleItem {
     
+    enum TextPosition {
+        case center
+        case aboveView(viewNumber: Int)
+        case belowView(viewNumber: Int)
+        case leftOfView(viewNumber: Int)
+        case rightOfView(viewNumber: Int)
+    }
+    
     let layoutActions: [AutoLayoutAction]
+    let textPosition: TextPosition
     
     var text: String {
         
@@ -113,8 +122,9 @@ struct ExampleItem {
         return string
     }
 
-    init(layoutActions: [AutoLayoutAction]) {
+    init(textPosition: TextPosition, layoutActions: [AutoLayoutAction]) {
         self.layoutActions = layoutActions
+        self.textPosition = textPosition
     }
     
     
