@@ -52,6 +52,32 @@ class ViewController: UIViewController {
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewRight(margin: 20))
                 ])
         )
+        
+        items.append(
+            ExampleItem(layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsTopStrip(height: 50)),
+                ])
+        )
+        
+        items.append(
+            ExampleItem(layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsBottomStrip(height: 150)),
+                ])
+        )
+        
+        items.append(
+            ExampleItem(layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsLeftStrip(width: 15)),
+                ])
+        )
+        
+        items.append(
+            ExampleItem(layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsRightStrip(width: 60)),
+                ])
+        )
+
+
 
         return items
     }

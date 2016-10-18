@@ -17,6 +17,10 @@ struct AutoLayoutAction {
         case pinToSuperviewBottom(margin: Int)
         case pinToSuperviewLeft(margin: Int)
         case pinToSuperviewRight(margin: Int)
+        case pinToSuperviewAsTopStrip(height: Int)
+        case pinToSuperviewAsBottomStrip(height: Int)
+        case pinToSuperviewAsLeftStrip(width: Int)
+        case pinToSuperviewAsRightStrip(width: Int)
 
         func name() -> String {
             
@@ -31,6 +35,14 @@ struct AutoLayoutAction {
                 return "pinToSuperviewLeft(\(margin))"
             case .pinToSuperviewRight(let margin):
                 return "pinToSuperviewRight(\(margin))"
+            case .pinToSuperviewAsTopStrip(let height):
+                return "pinToSuperviewAsTopStrip(\(height))"
+            case .pinToSuperviewAsBottomStrip(let height):
+                return "pinToSuperviewAsBottomStrip(\(height))"
+            case .pinToSuperviewAsLeftStrip(let width):
+                return "pinToSuperviewAsLeftStrip(\(width))"
+            case .pinToSuperviewAsRightStrip(let width):
+                return "pinToSuperviewAsRightStrip(\(width))"
             }
         }
     }
@@ -71,6 +83,14 @@ struct AutoLayoutAction {
             view.pinToSuperviewLeft(CGFloat(margin))
         case .pinToSuperviewRight(let margin):
             view.pinToSuperviewRight(CGFloat(margin))
+        case .pinToSuperviewAsTopStrip(let height):
+            view.pinToSuperviewAsTopStrip(CGFloat(height))
+        case .pinToSuperviewAsBottomStrip(let height):
+            view.pinToSuperviewAsBottomStrip(CGFloat(height))
+        case .pinToSuperviewAsLeftStrip(let width):
+            view.pinToSuperviewAsLeftStrip(CGFloat(width))
+        case .pinToSuperviewAsRightStrip(let width):
+            view.pinToSuperviewAsRightStrip(CGFloat(width))
         }
     }
     
