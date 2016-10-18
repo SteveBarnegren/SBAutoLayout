@@ -10,16 +10,18 @@ import UIKit
 
 class ExampleCell: UICollectionViewCell {
     
-    let textField = UITextField()
+    let label = UILabel()
+    var views = [Int:UIView]()
     
     override init(frame: CGRect) {
         
         super.init(frame: frame)
         
         // Textfield
-        textField.text = "Test text"
-        textField.textAlignment = .center
-        self.contentView.addSubview(textField)
+        label.text = "Test text"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        self.contentView.addSubview(label)
         
         self.backgroundColor = UIColor.magenta
         
@@ -32,7 +34,34 @@ class ExampleCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        textField.frame = contentView.bounds
+        label.frame = contentView.bounds
+    }
+    
+    func configureWithItem(item: ExampleItem) {
+        
+        // Remove old views
+        for (_, view) in Array(views) {
+            view.removeFromSuperview()
+        }
+        views.removeAll()
+        
+        // Create new views
+        for action in item.layoutActions {
+            
+            if views[action.viewNumber] == nil{
+                
+                let view = UIView(frame: .zero)
+                view.backgroundColor = UIColor.green
+                contentView.addSubview(view)
+                views[action.viewNumber] = view
+            }
+            
+            action.apply(view: views[action.viewNumber]!)
+            
+        }
+        
+        label.text = item.text
+        label.superview?.bringSubview(toFront: label)
     }
     
 }

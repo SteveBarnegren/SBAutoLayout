@@ -38,13 +38,24 @@ class ViewController: UIViewController {
         
         var items = [ExampleItem]()
         
-        items.append( ExampleItem(text: "hello") )
-        items.append( ExampleItem(text: "hesfdsfllo") )
-        items.append( ExampleItem(text: "dgdfsgdgdsggfdgs") )
+        items.append(
+            ExampleItem(layoutActions: [
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperViewEdges)
+                ])
+        )
+        
+        items.append(
+            ExampleItem(layoutActions: [
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewTop(margin: 40)),
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewBottom(margin: 40)),
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewLeft(margin: 20)),
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewRight(margin: 20))
+                ])
+        )
 
         return items
     }
-
+    
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -62,6 +73,7 @@ extension ViewController: UICollectionViewDataSource {
         let identifier = String(describing: ExampleCell.self)
         
         let cell: ExampleCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ExampleCell
+        cell.configureWithItem(item: items[indexPath.row])
         return cell
         
     }
