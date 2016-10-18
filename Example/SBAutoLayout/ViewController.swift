@@ -7,18 +7,98 @@
 //
 
 import UIKit
+import SBAutoLayout
 
 class ViewController: UIViewController {
+    
+    var collectionView: UICollectionView!
+    var items: [ExampleItem]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Collection view
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.addSubview(collectionView)
+        collectionView.pinToSuperviewEdges()
+        collectionView.backgroundColor = UIColor.orange
+        collectionView.register(ExampleCell.self, forCellWithReuseIdentifier: String(describing: ExampleCell.self) )
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.isPagingEnabled = true
+        
+        // Create items
+        self.items = makeItems()
     }
+    
+    func makeItems() -> [ExampleItem] {
+        
+        var items = [ExampleItem]()
+        
+        items.append( ExampleItem(text: "hello") )
+        items.append( ExampleItem(text: "hesfdsfllo") )
+        items.append( ExampleItem(text: "dgdfsgdgdsggfdgs") )
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        return items
     }
 
 }
+
+extension ViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let identifier = String(describing: ExampleCell.self)
+        
+        let cell: ExampleCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ExampleCell
+        return cell
+        
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.bounds.size
+    }
+    
+    
+}
+
+extension ViewController: UICollectionViewDelegate {
+    
+    /*
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
+ */
+}
+
 
