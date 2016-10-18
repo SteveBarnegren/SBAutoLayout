@@ -1,0 +1,16 @@
+PODS:
+  - SBAutoLayout (0.1.1)
+
+DEPENDENCIES:
+  - SBAutoLayout (from `../`)
+
+EXTERNAL SOURCES:
+  SBAutoLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SBAutoLayout: cf3b4588f4ceb2e5c00c8bd8994a855f6eea3db8
+
+PODFILE CHECKSUM: 71652960dcf061ff3e7ad2b951ea2b6b197f7f3c
+
+COCOAPODS: 1.0.1
