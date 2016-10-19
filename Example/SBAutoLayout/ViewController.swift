@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = UIColor.clear
+        self.collectionView.showsHorizontalScrollIndicator = false
         
         // Create items
         self.items = makeItems()
