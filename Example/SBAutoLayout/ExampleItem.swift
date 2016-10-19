@@ -56,31 +56,31 @@ struct AutoLayoutAction {
             case .pinToSuperViewEdges:
                 return "pinToSuperViewEdges()"
             case .pinToSuperviewTop(let margin):
-                return "pinToSuperviewTop(\(margin))"
+                return "pinToSuperviewTop(margin: \(margin))"
             case .pinToSuperviewBottom(let margin):
-                return "pinToSuperviewBottom(\(margin))"
+                return "pinToSuperviewBottom(margin: \(margin))"
             case .pinToSuperviewLeft(let margin):
-                return "pinToSuperviewLeft(\(margin))"
+                return "pinToSuperviewLeft(margin: \(margin))"
             case .pinToSuperviewRight(let margin):
-                return "pinToSuperviewRight(\(margin))"
+                return "pinToSuperviewRight(margin: \(margin))"
             case .pinToSuperviewLeading(let margin):
-                return "pinToSuperviewLeading(\(margin))"
+                return "pinToSuperviewLeading(margin: \(margin))"
             case .pinToSuperviewTrailing(let margin):
-                return "pinToSuperviewTrailing(\(margin))"
+                return "pinToSuperviewTrailing(margin: \(margin))"
 
                 // Pin to superview as strip
             case .pinToSuperviewAsTopStrip(let height):
-                return "pinToSuperviewAsTopStrip(\(height))"
+                return "pinToSuperviewAsTopStrip(height: \(height))"
             case .pinToSuperviewAsBottomStrip(let height):
-                return "pinToSuperviewAsBottomStrip(\(height))"
+                return "pinToSuperviewAsBottomStrip(height: \(height))"
             case .pinToSuperviewAsLeftStrip(let width):
-                return "pinToSuperviewAsLeftStrip(\(width))"
+                return "pinToSuperviewAsLeftStrip(width: \(width))"
             case .pinToSuperviewAsRightStrip(let width):
-                return "pinToSuperviewAsRightStrip(\(width))"
+                return "pinToSuperviewAsRightStrip(width: \(width))"
             case .pinToSuperviewAsLeadingStrip(let width):
-                return "pinToSuperviewAsLeadingStrip(\(width))"
+                return "pinToSuperviewAsLeadingStrip(width: \(width))"
             case .pinToSuperviewAsTrailingStrip(let width):
-                return "pinToSuperviewAsTrailingStrip(\(width))"
+                return "pinToSuperviewAsTrailingStrip(width: \(width))"
                 
                 // Pin to superview center
             case .pinToSuperviewCenter:
@@ -144,31 +144,31 @@ struct AutoLayoutAction {
         case .pinToSuperViewEdges:
             view.pinToSuperviewEdges()
         case .pinToSuperviewTop(let margin):
-            view.pinToSuperviewTop(CGFloat(margin))
+            view.pinToSuperviewTop(margin: CGFloat(margin))
         case .pinToSuperviewBottom(let margin):
-            view.pinToSuperviewBottom(CGFloat(margin))
+            view.pinToSuperviewBottom(margin: CGFloat(margin))
         case .pinToSuperviewLeft(let margin):
-            view.pinToSuperviewLeft(CGFloat(margin))
+            view.pinToSuperviewLeft(margin: CGFloat(margin))
         case .pinToSuperviewRight(let margin):
-            view.pinToSuperviewRight(CGFloat(margin))
+            view.pinToSuperviewRight(margin: CGFloat(margin))
         case .pinToSuperviewLeading(let margin):
-            view.pinToSuperviewLeading(CGFloat(margin))
+            view.pinToSuperviewLeading(margin: CGFloat(margin))
         case .pinToSuperviewTrailing(let margin):
-            view.pinToSuperviewTrailing(CGFloat(margin))
+            view.pinToSuperviewTrailing(margin: CGFloat(margin))
             
             // Pin to superview as strip
         case .pinToSuperviewAsTopStrip(let height):
-            view.pinToSuperviewAsTopStrip(CGFloat(height))
+            view.pinToSuperviewAsTopStrip(height: CGFloat(height))
         case .pinToSuperviewAsBottomStrip(let height):
-            view.pinToSuperviewAsBottomStrip(CGFloat(height))
+            view.pinToSuperviewAsBottomStrip(height: CGFloat(height))
         case .pinToSuperviewAsLeftStrip(let width):
-            view.pinToSuperviewAsLeftStrip(CGFloat(width))
+            view.pinToSuperviewAsLeftStrip(width: CGFloat(width))
         case .pinToSuperviewAsRightStrip(let width):
-            view.pinToSuperviewAsRightStrip(CGFloat(width))
+            view.pinToSuperviewAsRightStrip(width: CGFloat(width))
         case .pinToSuperviewAsLeadingStrip(let width):
-            view.pinToSuperviewAsLeadingStrip(CGFloat(width))
+            view.pinToSuperviewAsLeadingStrip(width: CGFloat(width))
         case .pinToSuperviewAsTrailingStrip(let width):
-            view.pinToSuperviewAsTrailingStrip(CGFloat(width))
+            view.pinToSuperviewAsTrailingStrip(width: CGFloat(width))
 
             
             // Pin to superview center
