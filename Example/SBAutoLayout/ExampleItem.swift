@@ -39,7 +39,7 @@ struct AutoLayoutAction {
         case pinToSuperviewCenter
         case pinToSuperviewCenterX(offset: Int?)
         case pinToSuperviewCenterY(offset: Int?)
-
+        
         func name() -> String {
             
             switch self {
@@ -54,7 +54,7 @@ struct AutoLayoutAction {
                 
                 // Pin to superview edges
             case .pinToSuperViewEdges:
-                return "pinToSuperViewEdges"
+                return "pinToSuperViewEdges()"
             case .pinToSuperviewTop(let margin):
                 return "pinToSuperviewTop(\(margin))"
             case .pinToSuperviewBottom(let margin):
@@ -99,13 +99,12 @@ struct AutoLayoutAction {
                 else{
                     return "pinToSuperviewCenterY()"
                 }
-   
-                
-            }
+        }
+
         }
 
     }
-    
+
     let layoutFuction: LayoutFuction
     let viewNumber: Int
     

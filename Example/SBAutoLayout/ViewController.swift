@@ -13,9 +13,18 @@ class ViewController: UIViewController {
     
     var collectionView: UICollectionView!
     var items: [ExampleItem]!
+    let rectangleDrawingView = RectangleDrawingView()
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Rectangle drawing view
+        view.addSubview(self.rectangleDrawingView)
+        self.rectangleDrawingView.pinToSuperviewEdges()
         
         // Collection view
         let layout = UICollectionViewFlowLayout()
@@ -29,9 +38,20 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
+        collectionView.backgroundColor = UIColor.clear
         
         // Create items
         self.items = makeItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        redraw()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        redraw()
     }
     
     func makeItems() -> [ExampleItem] {
@@ -165,11 +185,72 @@ class ViewController: UIViewController {
                 ])
         )
 
-
-
-
         return items
     }
+    
+    func redraw() {
+        
+        print("**************************")
+        
+        var offset = collectionView.contentOffset.x / collectionView.bounds.size.width
+        offset = min(offset, CGFloat(items.count-1))
+        offset = max(0, offset)
+        
+        let beforeIndex = Int(offset)
+        let nextIndex = beforeIndex+1
+        print("Before Index: \(beforeIndex)")
+        print("Next Index: \(nextIndex)")
+        
+        var beforeRect = rectForView(viewNumber: 0, cellIndex: beforeIndex)
+        var nextRect = rectForView(viewNumber: 0, cellIndex: nextIndex)
+        
+        if beforeRect == nil {
+            beforeRect = nextRect ?? .zero
+        }
+        
+        if nextRect == nil {
+            nextRect = beforeRect ?? .zero
+        }
+        
+        print("Before rect: \(beforeRect!)")
+        print("Next rect: \(nextRect!)")
+        
+        let interpolationPct = offset - CGFloat(beforeIndex)
+        print("Interpolation pct: \(interpolationPct)")
+        let rect = interpolateRects(startRect: beforeRect!,
+                                    endRect: nextRect!,
+                                    t: interpolationPct)
+        
+        let rectangle = RectangleDrawingView.Rectangle(rect: rect,
+                                                       color: UIColor(red: 0.333, green: 0.675, blue: 0.937, alpha: 1))
+        print("Rect: \(rectangle.rect)")
+        rectangleDrawingView.rectangles = [rectangle]
+    }
+    
+    func rectForView(viewNumber: Int, cellIndex: Int) -> CGRect? {
+        
+        let indexPath = IndexPath(item: cellIndex, section: 0)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ExampleCell else {
+            return nil
+        }
+        
+        let rect = cell.rectForView(viewNumber: viewNumber)
+        return rect
+    }
+    
+    func interpolateRects(startRect: CGRect, endRect: CGRect, t: CGFloat) -> CGRect {
+        
+        let x = startRect.origin.x + (endRect.origin.x - startRect.origin.x) * t
+        let y = startRect.origin.y + (endRect.origin.y - startRect.origin.y) * t
+        let w = startRect.size.width + (endRect.size.width - startRect.size.width) * t
+        let h = startRect.size.height + (endRect.size.height - startRect.size.height) * t
+        
+        return CGRect(x: x,
+                      y: y,
+                      width: w,
+                      height: h)
+    }
+
     
 }
 
@@ -211,21 +292,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension ViewController: UIScrollViewDelegate {
     
-    /*
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        redraw()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        <#code#>
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        <#code#>
-    }
- */
+
 }
 
 

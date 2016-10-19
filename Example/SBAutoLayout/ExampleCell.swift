@@ -8,6 +8,8 @@
 
 import UIKit
 
+let DEBUG_DRAW = false
+
 class ExampleCell: UICollectionViewCell {
     
     let label = UILabel()
@@ -24,7 +26,7 @@ class ExampleCell: UICollectionViewCell {
         label.numberOfLines = 0
         self.contentView.addSubview(label)
         
-        self.backgroundColor = UIColor.magenta
+        self.backgroundColor = UIColor.clear
         
     }
     
@@ -116,9 +118,14 @@ class ExampleCell: UICollectionViewCell {
             if views[action.viewNumber] == nil{
                 
                 let view = UIView(frame: .zero)
-                view.backgroundColor = UIColor.green
+                view.backgroundColor = UIColor.clear
                 contentView.addSubview(view)
                 views[action.viewNumber] = view
+                
+                if DEBUG_DRAW {
+                    view.backgroundColor = UIColor.green
+                }
+
             }
             
             action.apply(view: views[action.viewNumber]!)
@@ -131,5 +138,23 @@ class ExampleCell: UICollectionViewCell {
         setNeedsLayout()
         layoutIfNeeded()
     }
+    
+    // MARK: - Get autolayout rects
+    
+    public func numberOfViews() -> Int {
+        return self.views.count
+    }
+    
+    public func rectForView(viewNumber: Int) -> CGRect {
+        
+        guard let view = self.views[viewNumber] else {
+            return .zero
+        }
+        
+        return view.frame
+    }
+    
+    
+    
     
 }

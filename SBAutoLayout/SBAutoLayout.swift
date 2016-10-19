@@ -238,7 +238,7 @@ extension UIView{
     
     // MARK:- Pin views in subview heirarchy
 
-    @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -283,7 +283,7 @@ extension UIView{
         return constraint
     }
     
-    @discardableResult public func pinViewsWidthToSame(_ firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsWidthToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -298,7 +298,7 @@ extension UIView{
         return constraint
     }
     
-    @discardableResult public func pinViewsHeightToSame(_ firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsHeightToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
         
