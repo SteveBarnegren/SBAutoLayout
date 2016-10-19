@@ -38,6 +38,10 @@ class ExampleCell: UICollectionViewCell {
         switch textPosition {
         case .center:
             label.frame = contentView.bounds
+        case .centerInView(let viewNumber):
+            if let view = views[viewNumber] {
+                positionLabelInCenterOfView(view)
+            }
         case .aboveView(let viewNumber):
             if let view = views[viewNumber] {
                 positionLabelAboveView(view)
@@ -56,6 +60,11 @@ class ExampleCell: UICollectionViewCell {
             }
         }
     }
+    
+    func positionLabelInCenterOfView(_ view: UIView) {
+        label.frame = view.frame
+    }
+
     
     func positionLabelAboveView(_ view: UIView) {
     

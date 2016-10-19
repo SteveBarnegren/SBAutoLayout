@@ -38,44 +38,115 @@ class ViewController: UIViewController {
         
         var items = [ExampleItem]()
         
+        // Pin to superview edges
         items.append(
             ExampleItem(textPosition: .center, layoutActions: [
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperViewEdges)
                 ])
         )
         
+        // Pin to super view edges separately with margins (using left / right)
         items.append(
-            ExampleItem(textPosition: .center, layoutActions: [
-                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewTop(margin: 40)),
-                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewBottom(margin: 40)),
+            ExampleItem(textPosition: .centerInView(viewNumber: 0), layoutActions: [
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewTop(margin: 20)),
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewBottom(margin: 20)),
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewLeft(margin: 20)),
                             AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewRight(margin: 20))
                 ])
         )
         
+        // Pin to super view edges separately with margins (using leading / trailing)
+        items.append(
+            ExampleItem(textPosition: .centerInView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewTop(margin: 60)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewBottom(margin: 40)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewLeading(margin: 15)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewTrailing(margin: 15))
+                ])
+        )
+        
+        // Pin as top strip
         items.append(
             ExampleItem(textPosition: .belowView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsTopStrip(height: 50)),
                 ])
         )
         
+        // Pin as bottom strip
         items.append(
             ExampleItem(textPosition: .aboveView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsBottomStrip(height: 150)),
                 ])
         )
         
+        // Pin as left strip
         items.append(
             ExampleItem(textPosition: .rightOfView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsLeftStrip(width: 15)),
                 ])
         )
         
+        // Pin as right strip
         items.append(
             ExampleItem(textPosition: .leftOfView(viewNumber: 0), layoutActions: [
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsRightStrip(width: 60)),
                 ])
         )
+        
+        // Pin as leading strip
+        items.append(
+            ExampleItem(textPosition: .rightOfView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsLeadingStrip(width: 40)),
+                ])
+        )
+        
+        // Pin as trailing strip
+        items.append(
+            ExampleItem(textPosition: .leftOfView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewAsTrailingStrip(width: 20)),
+                ])
+        )
+
+        
+        // Pin to center with width / height
+        items.append(
+            ExampleItem(textPosition: .aboveView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenter),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinHeight(height: 80)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinWidth(width: 250)),
+                ])
+        )
+        
+        // Pin to center with width / height and Y offset
+        items.append(
+            ExampleItem(textPosition: .belowView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenterX(offset: nil)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenterY(offset: -100)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinHeight(height: 60)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinWidth(width: 100)),
+                ])
+        )
+        
+        // Pin to center with width / height and Y and X offset
+        items.append(
+            ExampleItem(textPosition: .belowView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenterX(offset: -100)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenterY(offset: -100)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinHeight(height: 50)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinWidth(width: 50)),
+                ])
+        )
+        
+        // Pin to center with width / height and Y and X offset
+        items.append(
+            ExampleItem(textPosition: .aboveView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenterX(offset: 70)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenterY(offset: 70)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinHeight(height: 100)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinWidth(width: 100)),
+                ])
+        )
+
 
 
 
