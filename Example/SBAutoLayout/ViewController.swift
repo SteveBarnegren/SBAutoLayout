@@ -146,6 +146,24 @@ class ViewController: UIViewController {
                 AutoLayoutAction(viewNumber: 0, layoutFunction: .pinWidth(width: 100)),
                 ])
         )
+        
+        // Pin to center with width / aspect ratio
+        items.append(
+            ExampleItem(textPosition: .aboveView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenter),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinHeight(height: 100)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinAspectRatio(width: 1, height: 1))
+                ])
+        )
+        
+        // Pin to center with width / aspect ratio (wider)
+        items.append(
+            ExampleItem(textPosition: .aboveView(viewNumber: 0), layoutActions: [
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewCenter),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinHeight(height: 100)),
+                AutoLayoutAction(viewNumber: 0, layoutFunction: .pinAspectRatio(width: 3, height: 1))
+                ])
+        )
 
 
 

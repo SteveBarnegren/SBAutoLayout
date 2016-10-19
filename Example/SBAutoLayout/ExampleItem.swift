@@ -16,7 +16,8 @@ struct AutoLayoutAction {
         // Pin Width / Height
         case pinWidth(width: Int)
         case pinHeight(height: Int)
-        
+        case pinAspectRatio(width: Int, height: Int)
+
         // Pin to superview edges
         case pinToSuperViewEdges
         case pinToSuperviewTop(margin: Int)
@@ -48,6 +49,8 @@ struct AutoLayoutAction {
                 return "pinWidth(\(width))"
             case .pinHeight(let height):
                 return "pinHeight(\(height))"
+            case .pinAspectRatio(let width, let height):
+                return "pinAspectRatio(width: \(width), height: \(height))"
                 
                 // Pin to superview edges
             case .pinToSuperViewEdges:
@@ -135,6 +138,8 @@ struct AutoLayoutAction {
             view.pinWidth(CGFloat(width))
         case .pinHeight(let height):
             view.pinHeight(CGFloat(height))
+        case .pinAspectRatio(let width, let height):
+            view.pinAspectRatio(width: CGFloat(width), height: CGFloat(height))
             
             // Pin to superview edges
         case .pinToSuperViewEdges:

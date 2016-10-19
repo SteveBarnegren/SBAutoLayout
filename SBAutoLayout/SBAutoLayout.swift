@@ -43,6 +43,22 @@ extension UIView{
         return constraint
     }
     
+    @discardableResult public func pinAspectRatio(width: CGFloat, height: CGFloat) -> NSLayoutConstraint {
+    
+        translatesAutoresizingMaskIntoConstraints = false
+
+        let constraint = NSLayoutConstraint.init(item: self,
+                                                 attribute: .width,
+                                                 relatedBy: .equal,
+                                                 toItem: self,
+                                                 attribute: .height,
+                                                 multiplier: width/height,
+                                                 constant: 0)
+        
+        addConstraint(constraint)
+        return constraint
+    }
+    
     // MARK: - Pin to superview edges
     
     @discardableResult public func pinToSuperviewEdges() -> [NSLayoutConstraint]{
