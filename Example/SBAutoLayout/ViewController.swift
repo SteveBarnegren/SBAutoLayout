@@ -30,8 +30,6 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        
-        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.addSubview(collectionView)
         collectionView.pinToSuperviewEdges()
@@ -197,16 +195,12 @@ class ViewController: UIViewController {
     
     func redraw() {
         
-        print("**************************")
-        
         var offset = collectionView.contentOffset.x / collectionView.bounds.size.width
-        offset = min(offset, CGFloat(items.count-1))
+        offset = min(offset, CGFloat(items.count))
         offset = max(0, offset)
         
         let beforeIndex = Int(offset)
         let nextIndex = beforeIndex+1
-        print("Before Index: \(beforeIndex)")
-        print("Next Index: \(nextIndex)")
         
         var beforeRect = rectForView(viewNumber: 0, cellIndex: beforeIndex)
         var nextRect = rectForView(viewNumber: 0, cellIndex: nextIndex)
@@ -219,18 +213,13 @@ class ViewController: UIViewController {
             nextRect = beforeRect ?? .zero
         }
         
-        print("Before rect: \(beforeRect!)")
-        print("Next rect: \(nextRect!)")
-        
         let interpolationPct = offset - CGFloat(beforeIndex)
-        print("Interpolation pct: \(interpolationPct)")
         let rect = interpolateRects(startRect: beforeRect!,
                                     endRect: nextRect!,
                                     t: interpolationPct)
         
         let rectangle = RectangleDrawingView.Rectangle(rect: rect,
                                                        color: UIColor(red: 0.333, green: 0.675, blue: 0.937, alpha: 1))
-        print("Rect: \(rectangle.rect)")
         rectangleDrawingView.rectangles = [rectangle]
     }
     
