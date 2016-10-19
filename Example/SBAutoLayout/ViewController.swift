@@ -30,11 +30,18 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
+        
+        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.addSubview(collectionView)
         collectionView.pinToSuperviewEdges()
         collectionView.backgroundColor = UIColor.orange
         collectionView.register(ExampleCell.self, forCellWithReuseIdentifier: String(describing: ExampleCell.self) )
+        
+        let introCellIdentifier = String(describing: IntroCell.self)
+        let introCellNib = UINib(nibName: introCellIdentifier, bundle: nil)
+        collectionView.register(introCellNib, forCellWithReuseIdentifier: introCellIdentifier)
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
@@ -230,7 +237,7 @@ class ViewController: UIViewController {
     func rectForView(viewNumber: Int, cellIndex: Int) -> CGRect? {
         
         let indexPath = IndexPath(item: cellIndex, section: 0)
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ExampleCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AutoLayoutExampleCell else {
             return nil
         }
         
@@ -261,16 +268,25 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return items.count + 1 // +1 for intro cell
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let identifier = String(describing: ExampleCell.self)
-        
-        let cell: ExampleCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ExampleCell
-        cell.configureWithItem(item: items[indexPath.row])
-        return cell
+        if indexPath.row == 0 {
+            let identifier = String(describing: IntroCell.self)
+
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! IntroCell
+            return cell
+        }
+        else{
+            let identifier = String(describing: ExampleCell.self)
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ExampleCell
+            cell.configureWithItem(item: items[indexPath.row-1])
+            return cell
+
+        }
         
     }
 }

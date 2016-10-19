@@ -19,6 +19,9 @@ class ExampleCell: UICollectionViewCell {
     override init(frame: CGRect) {
         
         super.init(frame: frame)
+
+        // Self
+        self.backgroundColor = UIColor.clear
         
         // Textfield
         label.text = "Test text"
@@ -27,8 +30,6 @@ class ExampleCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.textAlignment = .left
         self.contentView.addSubview(label)
-        
-        self.backgroundColor = UIColor.clear
         
     }
     
@@ -173,7 +174,9 @@ class ExampleCell: UICollectionViewCell {
         layoutIfNeeded()
     }
     
-    // MARK: - Get autolayout rects
+}
+
+extension ExampleCell: AutoLayoutExampleCell {
     
     public func numberOfViews() -> Int {
         return self.views.count
@@ -187,5 +190,4 @@ class ExampleCell: UICollectionViewCell {
         
         return view.frame
     }
-    
 }
