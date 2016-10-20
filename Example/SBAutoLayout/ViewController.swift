@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         // Pin to superview edges
         items.append(
             ExampleItem(textPosition: .center, layoutActions: [
-                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperViewEdges)
+                            AutoLayoutAction(viewNumber: 0, layoutFunction: .pinToSuperviewEdges)
                 ])
         )
         
