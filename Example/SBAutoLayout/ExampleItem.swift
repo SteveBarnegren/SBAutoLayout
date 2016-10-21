@@ -42,7 +42,10 @@ struct AutoLayoutAction {
         
         // Pin Multiple Views
         case pinViewsVertically(topViewNum: Int, bottomViewNum: Int, separation: Int?)
-
+        case pinViewsHorizontallyLeftRight(leftViewNum: Int, rightViewNum: Int, separation: Int?)
+        case pinViewsHorizontallyLeadingTrailing(leadingViewNum: Int, trailingViewNum: Int, separation: Int?)
+        case pinViewsWidthToSame(firstViewNum: Int, secondViewNum: Int)
+        case pinViewsHeightToSame(firstViewNum: Int, secondViewNum: Int)
         
         func name() -> String {
             
@@ -112,7 +115,28 @@ struct AutoLayoutAction {
                 else{
                     return "\(ViewNamesAndColors.mainViewName()).pinViewsVertically(topView: $\(topViewNum), bottomView: $\(bottomViewNum))"
                 }
- 
+                
+            case .pinViewsHorizontallyLeftRight(let leftViewNum, let rightViewNum, let separation):
+                if let separation = separation {
+                    return "\(ViewNamesAndColors.mainViewName()).pinViewsHorizontally(leftView: $\(leftViewNum),\nrightView: $\(rightViewNum),\nseparation: \(separation))"
+                }
+                else{
+                    return "\(ViewNamesAndColors.mainViewName()).pinViewsHorizontally(leftView: $\(leftViewNum), rightView: $\(rightViewNum))"
+                }
+                
+            case .pinViewsHorizontallyLeadingTrailing(let leadingViewNum, let trailingViewNum, let separation):
+                if let separation = separation {
+                    return "\(ViewNamesAndColors.mainViewName()).pinViewsHorizontally(leadingView: $\(leadingViewNum),\ntrailingView: $\(trailingViewNum),\nseparation: \(separation))"
+                }
+                else{
+                    return "\(ViewNamesAndColors.mainViewName()).pinViewsHorizontally(leadingView: $\(leadingViewNum), trailingView: $\(trailingViewNum))"
+                }
+                
+            case .pinViewsWidthToSame(let firstViewNum, let secondViewNum):
+                return "\(ViewNamesAndColors.mainViewName()).pinViewsWidthToSame(firstView: $\(firstViewNum),\nsecondView: $\(secondViewNum))"
+                
+            case .pinViewsHeightToSame(let firstViewNum, let secondViewNum):
+                return "\(ViewNamesAndColors.mainViewName()).pinViewsHeightToSame(firstView: $\(firstViewNum),\nsecondView: $\(secondViewNum))"
                 
         }
 
@@ -229,6 +253,28 @@ struct AutoLayoutAction {
             else{
                 superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum])
             }
+            
+        case .pinViewsHorizontallyLeftRight(let leftViewNum, let rightViewNum, let separation):
+            if let separation = separation {
+                superView.pinViewsHorizontally(leftView: subViews[leftViewNum], rightView: subViews[rightViewNum], separation: CGFloat(separation))
+            }
+            else{
+                superView.pinViewsHorizontally(leftView: subViews[leftViewNum], rightView: subViews[rightViewNum])
+            }
+            
+        case .pinViewsHorizontallyLeadingTrailing(let leadingViewNum, let trailingViewNum, let separation):
+            if let separation = separation {
+                superView.pinViewsHorizontally(leadingView: subViews[leadingViewNum], trailingView: subViews[trailingViewNum], separation: CGFloat(separation))
+            }
+            else{
+                superView.pinViewsHorizontally(leadingView: subViews[leadingViewNum], trailingView: subViews[trailingViewNum])
+            }
+            
+        case .pinViewsWidthToSame(let firstViewNum, let secondViewNum):
+            superView.pinViewsWidthToSame(firstView: subViews[firstViewNum], secondView: subViews[secondViewNum])
+            
+        case .pinViewsHeightToSame(let firstViewNum, let secondViewNum):
+            superView.pinViewsHeightToSame(firstView: subViews[firstViewNum], secondView: subViews[secondViewNum])
 
         }
     }

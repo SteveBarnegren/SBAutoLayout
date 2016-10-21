@@ -246,9 +246,10 @@ extension UIView{
         return constraint
     }
     
-    @discardableResult public func pinViewsHorizonally(leadingView: UIView, trailingView: UIView, separation: CGFloat) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsHorizontally(leadingView: UIView, trailingView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
         
-        translatesAutoresizingMaskIntoConstraints = false
+        leadingView.translatesAutoresizingMaskIntoConstraints = false
+        trailingView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: leadingView,
                                             attribute: .trailing,
@@ -256,14 +257,15 @@ extension UIView{
                                             toItem: trailingView,
                                             attribute: .leading,
                                             multiplier: 1,
-                                            constant: separation)
+                                            constant: -separation)
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinViewsHorizonally(leftView: UIView, rightView: UIView, separation: CGFloat) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsHorizontally(leftView: UIView, rightView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
         
-        translatesAutoresizingMaskIntoConstraints = false
+        leftView.translatesAutoresizingMaskIntoConstraints = false
+        rightView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: leftView,
                                             attribute: .right,
@@ -271,15 +273,16 @@ extension UIView{
                                             toItem: rightView,
                                             attribute: .left,
                                             multiplier: 1,
-                                            constant: separation)
+                                            constant: -separation)
         addConstraint(constraint)
         return constraint
     }
     
     @discardableResult public func pinViewsWidthToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
         
-        translatesAutoresizingMaskIntoConstraints = false
-        
+        firstView.translatesAutoresizingMaskIntoConstraints = false
+        secondView.translatesAutoresizingMaskIntoConstraints = false
+
         let constraint = NSLayoutConstraint(item: firstView,
                                             attribute: .width,
                                             relatedBy: .equal,
@@ -293,7 +296,8 @@ extension UIView{
     
     @discardableResult public func pinViewsHeightToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
         
-        translatesAutoresizingMaskIntoConstraints = false
+        firstView.translatesAutoresizingMaskIntoConstraints = false
+        secondView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: firstView,
                                             attribute: .height,
