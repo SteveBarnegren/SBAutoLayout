@@ -13,7 +13,7 @@ let DEBUG_DRAW = false
 class ExampleCell: UICollectionViewCell {
     
     let label = UILabel()
-    var views = [Int:UIView]()
+    var views = [UIView]()
     var textPosition: ExampleItem.TextPosition = .center
     
     override init(frame: CGRect) {
@@ -44,25 +44,15 @@ class ExampleCell: UICollectionViewCell {
         case .center:
             positionLabelWithinFrame(frame: contentView.bounds)
         case .centerInView(let viewNumber):
-            if let view = views[viewNumber] {
-                positionLabelWithinFrame(frame: view.frame)
-            }
+            positionLabelWithinFrame(frame: views[viewNumber].frame)
         case .aboveView(let viewNumber):
-            if let view = views[viewNumber] {
-                positionLabelAboveView(view)
-            }
+            positionLabelAboveView(views[viewNumber])
         case .belowView(let viewNumber):
-            if let view = views[viewNumber] {
-                positionLabelBelowView(view)
-            }
+            positionLabelBelowView(views[viewNumber])
         case .leftOfView(let viewNumber):
-            if let view = views[viewNumber] {
-                positionLabelToLeftOfView(view)
-            }
+            positionLabelToLeftOfView(views[viewNumber])
         case .rightOfView(let viewNumber):
-            if let view = views[viewNumber] {
-                positionLabelToRightOfView(view)
-            }
+            positionLabelToRightOfView(views[viewNumber])
         }
     }
     
@@ -141,35 +131,36 @@ class ExampleCell: UICollectionViewCell {
     func configureWithItem(item: ExampleItem) {
         
         // Remove old views
-        for (_, view) in Array(views) {
+        for view in views {
             view.removeFromSuperview()
         }
         views.removeAll()
         
         // Create new views
-        for action in item.layoutActions {
+        for _ in 0..<item.numberOfViews {
             
-            if views[action.viewNumber] == nil {
-                
-                let view = UIView(frame: .zero)
-                view.backgroundColor = UIColor.clear
-                contentView.addSubview(view)
-                views[action.viewNumber] = view
-                
-                if DEBUG_DRAW {
-                    view.backgroundColor = UIColor.green
-                }
-
+            let view = UIView(frame: .zero)
+            view.backgroundColor = UIColor.clear
+            contentView.addSubview(view)
+            
+            if DEBUG_DRAW {
+                view.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
             }
             
-            action.apply(view: views[action.viewNumber]!)
-            
+            views.append(view)
         }
         
+        // Apply autolayout actions
+        for action in item.layoutActions {
+            action.apply(superView: contentView, subViews: views)
+        }
+        
+        // Update label
         textPosition = item.textPosition
         label.text = item.text
         label.superview?.bringSubview(toFront: label)
         
+        // Layout
         setNeedsLayout()
         layoutIfNeeded()
     }
@@ -184,10 +175,16 @@ extension ExampleCell: AutoLayoutExampleCell {
     
     public func rectForView(viewNumber: Int) -> CGRect {
         
-        guard let view = self.views[viewNumber] else {
+        if views.count > viewNumber {
+            return views[viewNumber].frame
+        }
+        else{
             return .zero
         }
-        
-        return view.frame
     }
+    
+    func colorForView(viewNumber: Int) -> UIColor {
+        return ViewNamesAndColors.colorForView(number: viewNumber)
+    }
+
 }

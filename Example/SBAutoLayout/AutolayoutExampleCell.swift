@@ -13,4 +13,5 @@ protocol AutoLayoutExampleCell {
     
     func numberOfViews() -> Int
     func rectForView(viewNumber: Int) -> CGRect
+    func colorForView(viewNumber: Int) -> UIColor
 }

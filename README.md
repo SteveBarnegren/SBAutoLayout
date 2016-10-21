@@ -4,9 +4,12 @@
 [![License](https://img.shields.io/cocoapods/l/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SBAutoLayout)
 [![Platform](https://img.shields.io/cocoapods/p/SBAutoLayout.svg?style=flat)](http://cocoapods.org/pods/SBAutoLayout)
 
-SBAutoLayout makes it easy to perform common auto layout operations without having to write verbose auto layout syntax.
+SBAutoLayout makes it easy to perform common auto layout operations in Swift without having to write verbose auto layout syntax.
 
-Better readme, documentation and screenshots are coming soon, I promise!
+## How to use
+
+Examples will go here!
+
 
 ## Installation
 

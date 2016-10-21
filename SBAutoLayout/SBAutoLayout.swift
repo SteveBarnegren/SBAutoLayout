@@ -232,7 +232,8 @@ extension UIView{
 
     @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
         
-        translatesAutoresizingMaskIntoConstraints = false
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: topView,
                                             attribute: .bottom,
@@ -240,7 +241,7 @@ extension UIView{
                                             toItem: bottomView,
                                             attribute: .top,
                                             multiplier: 1,
-                                            constant: separation)
+                                            constant: -separation)
         addConstraint(constraint)
         return constraint
     }

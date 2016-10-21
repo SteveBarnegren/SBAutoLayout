@@ -24,6 +24,10 @@ class IntroCell: UICollectionViewCell {
 
 extension IntroCell: AutoLayoutExampleCell {
     
+    func colorForView(viewNumber: Int) -> UIColor {
+        return ViewNamesAndColors.colorForView(number: 0)
+    }
+
     public func numberOfViews() -> Int {
         return 1
     }

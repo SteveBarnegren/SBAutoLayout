@@ -14,91 +14,106 @@ struct AutoLayoutAction {
     enum LayoutFuction {
         
         // Pin Width / Height
-        case pinWidth(width: Int)
-        case pinHeight(height: Int)
-        case pinAspectRatio(width: Int, height: Int)
+        case pinWidth(viewNum: Int, width: Int)
+        case pinHeight(viewNum: Int, height: Int)
+        case pinAspectRatio(viewNum: Int, width: Int, height: Int)
 
         // Pin to superview edges
-        case pinToSuperviewEdges
-        case pinToSuperviewTop(margin: Int)
-        case pinToSuperviewBottom(margin: Int)
-        case pinToSuperviewLeft(margin: Int)
-        case pinToSuperviewRight(margin: Int)
-        case pinToSuperviewLeading(margin: Int)
-        case pinToSuperviewTrailing(margin: Int)
+        case pinToSuperviewEdges(viewNum: Int)
+        case pinToSuperviewTop(viewNum: Int, margin: Int)
+        case pinToSuperviewBottom(viewNum: Int, margin: Int)
+        case pinToSuperviewLeft(viewNum: Int, margin: Int)
+        case pinToSuperviewRight(viewNum: Int, margin: Int)
+        case pinToSuperviewLeading(viewNum: Int, margin: Int)
+        case pinToSuperviewTrailing(viewNum: Int, margin: Int)
         
         // Pin to superview as strip
-        case pinToSuperviewAsTopStrip(height: Int)
-        case pinToSuperviewAsBottomStrip(height: Int)
-        case pinToSuperviewAsLeftStrip(width: Int)
-        case pinToSuperviewAsRightStrip(width: Int)
-        case pinToSuperviewAsLeadingStrip(width: Int)
-        case pinToSuperviewAsTrailingStrip(width: Int)
+        case pinToSuperviewAsTopStrip(viewNum: Int, height: Int)
+        case pinToSuperviewAsBottomStrip(viewNum: Int, height: Int)
+        case pinToSuperviewAsLeftStrip(viewNum: Int, width: Int)
+        case pinToSuperviewAsRightStrip(viewNum: Int, width: Int)
+        case pinToSuperviewAsLeadingStrip(viewNum: Int, width: Int)
+        case pinToSuperviewAsTrailingStrip(viewNum: Int, width: Int)
         
         // Pin to superview center
-        case pinToSuperviewCenter
-        case pinToSuperviewCenterX(offset: Int?)
-        case pinToSuperviewCenterY(offset: Int?)
+        case pinToSuperviewCenter(viewNum: Int)
+        case pinToSuperviewCenterX(viewNum: Int, offset: Int?)
+        case pinToSuperviewCenterY(viewNum: Int, offset: Int?)
+        
+        // Pin Multiple Views
+        case pinViewsVertically(topViewNum: Int, bottomViewNum: Int, separation: Int?)
+
         
         func name() -> String {
             
             switch self {
                 
                 // Pin Width / Height
-            case .pinWidth(let width):
-                return "pinWidth(\(width))"
-            case .pinHeight(let height):
-                return "pinHeight(\(height))"
-            case .pinAspectRatio(let width, let height):
-                return "pinAspectRatio(width: \(width), height: \(height))"
+            case .pinWidth(let viewNum, let width):
+                return "$\(viewNum).pinWidth(\(width))"
+            case .pinHeight(let viewNum, let height):
+                return "$\(viewNum).pinHeight(\(height))"
+            case .pinAspectRatio(let viewNum, let width, let height):
+                return "$\(viewNum).pinAspectRatio(width: \(width), height: \(height))"
                 
                 // Pin to superview edges
-            case .pinToSuperviewEdges:
-                return "pinToSuperviewEdges()"
-            case .pinToSuperviewTop(let margin):
-                return "pinToSuperviewTop(margin: \(margin))"
-            case .pinToSuperviewBottom(let margin):
-                return "pinToSuperviewBottom(margin: \(margin))"
-            case .pinToSuperviewLeft(let margin):
-                return "pinToSuperviewLeft(margin: \(margin))"
-            case .pinToSuperviewRight(let margin):
-                return "pinToSuperviewRight(margin: \(margin))"
-            case .pinToSuperviewLeading(let margin):
-                return "pinToSuperviewLeading(margin: \(margin))"
-            case .pinToSuperviewTrailing(let margin):
-                return "pinToSuperviewTrailing(margin: \(margin))"
+            case .pinToSuperviewEdges(let viewNum):
+                return "$\(viewNum).pinToSuperviewEdges()"
+            case .pinToSuperviewTop(let viewNum, let margin):
+                return "$\(viewNum).pinToSuperviewTop(margin: \(margin))"
+            case .pinToSuperviewBottom(let viewNum, let margin):
+                return "$\(viewNum).pinToSuperviewBottom(margin: \(margin))"
+            case .pinToSuperviewLeft(let viewNum, let margin):
+                return "$\(viewNum).pinToSuperviewLeft(margin: \(margin))"
+            case .pinToSuperviewRight(let viewNum, let margin):
+                return "$\(viewNum).pinToSuperviewRight(margin: \(margin))"
+            case .pinToSuperviewLeading(let viewNum, let margin):
+                return "$\(viewNum).pinToSuperviewLeading(margin: \(margin))"
+            case .pinToSuperviewTrailing(let viewNum, let margin):
+                return "$\(viewNum).pinToSuperviewTrailing(margin: \(margin))"
 
                 // Pin to superview as strip
-            case .pinToSuperviewAsTopStrip(let height):
-                return "pinToSuperviewAsTopStrip(height: \(height))"
-            case .pinToSuperviewAsBottomStrip(let height):
-                return "pinToSuperviewAsBottomStrip(height: \(height))"
-            case .pinToSuperviewAsLeftStrip(let width):
-                return "pinToSuperviewAsLeftStrip(width: \(width))"
-            case .pinToSuperviewAsRightStrip(let width):
-                return "pinToSuperviewAsRightStrip(width: \(width))"
-            case .pinToSuperviewAsLeadingStrip(let width):
-                return "pinToSuperviewAsLeadingStrip(width: \(width))"
-            case .pinToSuperviewAsTrailingStrip(let width):
-                return "pinToSuperviewAsTrailingStrip(width: \(width))"
+            case .pinToSuperviewAsTopStrip(let viewNum, let height):
+                return "$\(viewNum).pinToSuperviewAsTopStrip(height: \(height))"
+            case .pinToSuperviewAsBottomStrip(let viewNum, let height):
+                return "$\(viewNum).pinToSuperviewAsBottomStrip(height: \(height))"
+            case .pinToSuperviewAsLeftStrip(let viewNum, let width):
+                return "$\(viewNum).pinToSuperviewAsLeftStrip(width: \(width))"
+            case .pinToSuperviewAsRightStrip(let viewNum, let width):
+                return "$\(viewNum).pinToSuperviewAsRightStrip(width: \(width))"
+            case .pinToSuperviewAsLeadingStrip(let viewNum, let width):
+                return "$\(viewNum).pinToSuperviewAsLeadingStrip(width: \(width))"
+            case .pinToSuperviewAsTrailingStrip(let viewNum, let width):
+                return "$\(viewNum).pinToSuperviewAsTrailingStrip(width: \(width))"
                 
                 // Pin to superview center
-            case .pinToSuperviewCenter:
-                return "pinToSuperviewCenter()"
-            case .pinToSuperviewCenterX(let offset):
+            case .pinToSuperviewCenter(let viewNum):
+                return "$\(viewNum).pinToSuperviewCenter()"
+            case .pinToSuperviewCenterX(let viewNum, let offset):
                 if let offset = offset {
-                    return "pinToSuperviewCenterX(offset: \(offset))"
+                    return "$\(viewNum).pinToSuperviewCenterX(offset: \(offset))"
                 }
                 else{
-                    return "pinToSuperviewCenterX()"
+                    return "$\(viewNum).pinToSuperviewCenterX()"
                 }
-            case .pinToSuperviewCenterY(let offset):
+            case .pinToSuperviewCenterY(let viewNum, let offset):
                 if let offset = offset {
-                    return "pinToSuperviewCenterY(offset: \(offset))"
+                    return "$\(viewNum).pinToSuperviewCenterY(offset: \(offset))"
                 }
                 else{
-                    return "pinToSuperviewCenterY()"
+                    return "$\(viewNum).pinToSuperviewCenterY()"
                 }
+                
+                // Pin multiple views
+            case .pinViewsVertically(let topViewNum, let bottomViewNum, let separation):
+                if let separation = separation {
+                    return "\(ViewNamesAndColors.mainViewName()).pinViewsVertically(topView: $\(topViewNum),\nbottomView: $\(bottomViewNum),\nseparation: \(separation))"
+                }
+                else{
+                    return "\(ViewNamesAndColors.mainViewName()).pinViewsVertically(topView: $\(topViewNum), bottomView: $\(bottomViewNum))"
+                }
+ 
+                
         }
 
         }
@@ -106,87 +121,113 @@ struct AutoLayoutAction {
     }
 
     let layoutFuction: LayoutFuction
-    let viewNumber: Int
     
-    init(viewNumber: Int, layoutFunction: LayoutFuction) {
+    init(layoutFunction: LayoutFuction) {
         
-        self.viewNumber = viewNumber
         self.layoutFuction = layoutFunction
     }
     
     func name() -> String {
         
-        /*
-        if let viewName = viewName {
-            return "\(viewName).\(layoutFuction.name())"
+        var name = layoutFuction.name()
+        
+        // Replace placeholders with view names
+        for i in 0..<ViewNamesAndColors.numberOfViewColors() {
+            
+            let placeHolder = "$\(i)"
+            let viewName = ViewNamesAndColors.nameForView(number: i)
+            
+            name = name.replacingOccurrences(of: placeHolder, with: viewName)
         }
-        else{
-            return layoutFuction.name()
+        
+        // Add padding to multi-line methods
+        let lines = name.components(separatedBy: "\n")
+        if lines.count > 1 {
+            
+            name = lines[0]
+            
+            let padding = lines[0].components(separatedBy: "(")[0].characters.count + 1
+            var paddingString = String();
+            for _ in 0..<padding {
+                paddingString.append(" ")
+            }
+            
+            for i in 1..<lines.count {
+                name.append("\n")
+                name.append(paddingString + lines[i])
+            }
+            
         }
-        */
-        return layoutFuction.name()
-
+        
+        return name
     }
     
-    
-    func apply(view: UIView) {
+    func apply(superView: UIView, subViews: [UIView]) {
         switch layoutFuction {
             
             // Pin Width / Height
-        case .pinWidth(let width):
-            view.pinWidth(CGFloat(width))
-        case .pinHeight(let height):
-            view.pinHeight(CGFloat(height))
-        case .pinAspectRatio(let width, let height):
-            view.pinAspectRatio(width: CGFloat(width), height: CGFloat(height))
+        case .pinWidth(let viewNum, let width):
+            subViews[viewNum].pinWidth(CGFloat(width))
+        case .pinHeight(let viewNum, let height):
+            subViews[viewNum].pinHeight(CGFloat(height))
+        case .pinAspectRatio(let viewNum, let width, let height):
+            subViews[viewNum].pinAspectRatio(width: CGFloat(width), height: CGFloat(height))
             
             // Pin to superview edges
-        case .pinToSuperviewEdges:
-            view.pinToSuperviewEdges()
-        case .pinToSuperviewTop(let margin):
-            view.pinToSuperviewTop(margin: CGFloat(margin))
-        case .pinToSuperviewBottom(let margin):
-            view.pinToSuperviewBottom(margin: CGFloat(margin))
-        case .pinToSuperviewLeft(let margin):
-            view.pinToSuperviewLeft(margin: CGFloat(margin))
-        case .pinToSuperviewRight(let margin):
-            view.pinToSuperviewRight(margin: CGFloat(margin))
-        case .pinToSuperviewLeading(let margin):
-            view.pinToSuperviewLeading(margin: CGFloat(margin))
-        case .pinToSuperviewTrailing(let margin):
-            view.pinToSuperviewTrailing(margin: CGFloat(margin))
+        case .pinToSuperviewEdges(let viewNum):
+            subViews[viewNum].pinToSuperviewEdges()
+        case .pinToSuperviewTop(let viewNum, let margin):
+            subViews[viewNum].pinToSuperviewTop(margin: CGFloat(margin))
+        case .pinToSuperviewBottom(let viewNum, let margin):
+            subViews[viewNum].pinToSuperviewBottom(margin: CGFloat(margin))
+        case .pinToSuperviewLeft(let viewNum, let margin):
+            subViews[viewNum].pinToSuperviewLeft(margin: CGFloat(margin))
+        case .pinToSuperviewRight(let viewNum, let margin):
+            subViews[viewNum].pinToSuperviewRight(margin: CGFloat(margin))
+        case .pinToSuperviewLeading(let viewNum, let margin):
+            subViews[viewNum].pinToSuperviewLeading(margin: CGFloat(margin))
+        case .pinToSuperviewTrailing(let viewNum, let margin):
+            subViews[viewNum].pinToSuperviewTrailing(margin: CGFloat(margin))
             
             // Pin to superview as strip
-        case .pinToSuperviewAsTopStrip(let height):
-            view.pinToSuperviewAsTopStrip(height: CGFloat(height))
-        case .pinToSuperviewAsBottomStrip(let height):
-            view.pinToSuperviewAsBottomStrip(height: CGFloat(height))
-        case .pinToSuperviewAsLeftStrip(let width):
-            view.pinToSuperviewAsLeftStrip(width: CGFloat(width))
-        case .pinToSuperviewAsRightStrip(let width):
-            view.pinToSuperviewAsRightStrip(width: CGFloat(width))
-        case .pinToSuperviewAsLeadingStrip(let width):
-            view.pinToSuperviewAsLeadingStrip(width: CGFloat(width))
-        case .pinToSuperviewAsTrailingStrip(let width):
-            view.pinToSuperviewAsTrailingStrip(width: CGFloat(width))
+        case .pinToSuperviewAsTopStrip(let viewNum, let height):
+            subViews[viewNum].pinToSuperviewAsTopStrip(height: CGFloat(height))
+        case .pinToSuperviewAsBottomStrip(let viewNum, let height):
+            subViews[viewNum].pinToSuperviewAsBottomStrip(height: CGFloat(height))
+        case .pinToSuperviewAsLeftStrip(let viewNum, let width):
+            subViews[viewNum].pinToSuperviewAsLeftStrip(width: CGFloat(width))
+        case .pinToSuperviewAsRightStrip(let viewNum, let width):
+            subViews[viewNum].pinToSuperviewAsRightStrip(width: CGFloat(width))
+        case .pinToSuperviewAsLeadingStrip(let viewNum, let width):
+            subViews[viewNum].pinToSuperviewAsLeadingStrip(width: CGFloat(width))
+        case .pinToSuperviewAsTrailingStrip(let viewNum, let width):
+            subViews[viewNum].pinToSuperviewAsTrailingStrip(width: CGFloat(width))
 
-            
             // Pin to superview center
-        case .pinToSuperviewCenter:
-            view.pinToSuperviewCentre()
-        case .pinToSuperviewCenterX(let offset):
+        case .pinToSuperviewCenter(let viewNum):
+            subViews[viewNum].pinToSuperviewCentre()
+        case .pinToSuperviewCenterX(let viewNum, let offset):
             if let offset = offset {
-                view.pinToSuperviewCentreX(offset: CGFloat(offset))
+                subViews[viewNum].pinToSuperviewCentreX(offset: CGFloat(offset))
             }
             else{
-                view.pinToSuperviewCentreX()
+                subViews[viewNum].pinToSuperviewCentreX()
             }
-        case .pinToSuperviewCenterY(let offset):
+        case .pinToSuperviewCenterY(let viewNum, let offset):
             if let offset = offset {
-                view.pinToSuperviewCentreY(offset: CGFloat(offset))
+                subViews[viewNum].pinToSuperviewCentreY(offset: CGFloat(offset))
             }
             else{
-                view.pinToSuperviewCentreY()
+                subViews[viewNum].pinToSuperviewCentreY()
+            }
+            
+            // Pin multiple views
+        case .pinViewsVertically(let topViewNum, let bottomViewNum, let separation):
+            if let separation = separation {
+                superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum], separation: CGFloat(separation))
+            }
+            else{
+                superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum])
             }
 
         }
@@ -205,6 +246,7 @@ struct ExampleItem {
         case rightOfView(viewNumber: Int)
     }
     
+    let numberOfViews: Int
     let layoutActions: [AutoLayoutAction]
     let textPosition: TextPosition
     
@@ -221,11 +263,22 @@ struct ExampleItem {
         return string
     }
 
-    init(textPosition: TextPosition, layoutActions: [AutoLayoutAction]) {
+    init(numberOfViews: Int, textPosition: TextPosition, layoutActions: [AutoLayoutAction]) {
         self.layoutActions = layoutActions
         self.textPosition = textPosition
+        self.numberOfViews = numberOfViews
     }
     
+    func nameAndColorForView(number: Int) -> (name: String, color: UIColor) {
+        
+        let array: [(name: String, color: UIColor)] = [
+            
+            ("BlueView", UIColor(red: 0.333, green: 0.675, blue: 0.937, alpha: 1)),
+            ("OrangeView", UIColor.orange),
+            ]
+        
+        return array[number]
+    }
     
 }
 
