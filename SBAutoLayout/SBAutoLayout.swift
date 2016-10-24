@@ -111,7 +111,7 @@ extension UIView{
     }
     
     @discardableResult public func pinToSuperviewBottom(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.bottom, constant: -margin, priority: priority)
+        return matchAttributeToSuperview(.bottom, constant: margin, priority: priority, invert: true)
     }
     
     @discardableResult public func pinToSuperviewLeft(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
@@ -119,7 +119,7 @@ extension UIView{
     }
     
     @discardableResult public func pinToSuperviewRight(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.right, constant: -margin, priority: priority)
+        return matchAttributeToSuperview(.right, constant: margin, priority: priority, invert: true)
     }
     
     @discardableResult public func pinToSuperviewLeading(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
@@ -127,7 +127,7 @@ extension UIView{
     }
     
     @discardableResult public func pinToSuperviewTrailing(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.trailing, constant: -margin, priority: priority)
+        return matchAttributeToSuperview(.trailing, constant: margin, priority: priority, invert: true)
     }
     
     // MARK: - Pin to superview as strip
@@ -216,28 +216,6 @@ extension UIView{
         return constraints
     }
     
-    // MARK: - Match superview attributes
-    
-    public func matchAttributeToSuperview(_ attribute: NSLayoutAttribute, multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraint = NSLayoutConstraint(item: self,
-                                            attribute: attribute,
-                                            relatedBy: .equal,
-                                            toItem: superview,
-                                            attribute: attribute,
-                                            multiplier: multiplier,
-                                            constant: constant)
-        
-        if let priority = priority {
-            constraint.priority = priority
-        }
-        
-        superview!.addConstraint(constraint)
-        return constraint
-    }
-    
     // MARK:- Pin to other views
 
     @discardableResult public func pinAboveView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
@@ -245,13 +223,13 @@ extension UIView{
         translatesAutoresizingMaskIntoConstraints = false
         otherView.translatesAutoresizingMaskIntoConstraints = false
         
-        let constraint = NSLayoutConstraint(item: self,
-                                            attribute: .bottom,
-                                            relatedBy: .equal,
-                                            toItem: otherView,
+        let constraint = NSLayoutConstraint(item: otherView,
                                             attribute: .top,
+                                            relatedBy: .equal,
+                                            toItem: self,
+                                            attribute: .bottom,
                                             multiplier: 1,
-                                            constant: -separation)
+                                            constant: separation)
         
         if let priority = priority {
             constraint.priority = priority
@@ -270,13 +248,13 @@ extension UIView{
         translatesAutoresizingMaskIntoConstraints = false
         otherView.translatesAutoresizingMaskIntoConstraints = false
         
-        let constraint = NSLayoutConstraint(item: self,
-                                            attribute: .right,
-                                            relatedBy: .equal,
-                                            toItem: otherView,
+        let constraint = NSLayoutConstraint(item: otherView,
                                             attribute: .left,
+                                            relatedBy: .equal,
+                                            toItem: self,
+                                            attribute: .right,
                                             multiplier: 1,
-                                            constant: -separation)
+                                            constant: separation)
         
         if let priority = priority {
             constraint.priority = priority
@@ -401,9 +379,33 @@ extension UIView{
     
     
     
-    // MARK:- Get common superview
+    // MARK:- Private
     
-    func commonSuperviewWithView(_ otherView: UIView) -> UIView {
+    private func matchAttributeToSuperview(_ attribute: NSLayoutAttribute,
+                                           multiplier: CGFloat = 1,
+                                           constant: CGFloat = 0,
+                                           priority: UILayoutPriority? = nil,
+                                           invert: Bool = false) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: (invert ? superview! : self),
+                                            attribute: attribute,
+                                            relatedBy: .equal,
+                                            toItem: (invert ? self : superview!),
+                                            attribute: attribute,
+                                            multiplier: multiplier,
+                                            constant: constant)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
+        superview!.addConstraint(constraint)
+        return constraint
+    }
+    
+    private func commonSuperviewWithView(_ otherView: UIView) -> UIView {
         
         var testView = self
         
