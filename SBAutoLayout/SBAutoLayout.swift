@@ -13,7 +13,7 @@ extension UIView{
     
     // MARK: - Pin Width / Height
     
-    @discardableResult public func pinWidth(_ width: CGFloat) -> NSLayoutConstraint{
+    @discardableResult public func pinWidth(_ width: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -24,11 +24,16 @@ extension UIView{
                                                  attribute: .notAnAttribute,
                                                  multiplier: 1,
                                                  constant: width)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinHeight(_ height: CGFloat) -> NSLayoutConstraint{
+    @discardableResult public func pinHeight(_ height: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,11 +44,16 @@ extension UIView{
                                                  attribute: .notAnAttribute,
                                                  multiplier: 1,
                                                  constant: height)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinAspectRatio(width: CGFloat, height: CGFloat) -> NSLayoutConstraint {
+    @discardableResult public func pinAspectRatio(width: CGFloat, height: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
     
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -55,164 +65,160 @@ extension UIView{
                                                  multiplier: width/height,
                                                  constant: 0)
         
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
     
     // MARK: - Pin to superview edges
     
-    @discardableResult public func pinToSuperviewEdges() -> [NSLayoutConstraint]{
-        return self.pinToSuperviewEdges(top: 0, bottom: 0, leading: 0, trailing: 0)
+    @discardableResult public func pinToSuperviewEdges(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
+        return self.pinToSuperviewEdges(top: 0, bottom: 0, leading: 0, trailing: 0, priority: priority)
     }
     
-    @discardableResult public func pinToSuperviewEdges(top: CGFloat, bottom: CGFloat, leading: CGFloat, trailing: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewEdges(top: CGFloat, bottom: CGFloat, leading: CGFloat, trailing: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         translatesAutoresizingMaskIntoConstraints = false
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewTop(margin: top))
-        constraints.append(pinToSuperviewBottom(margin: bottom))
-        constraints.append(pinToSuperviewLeading(margin: leading))
-        constraints.append(pinToSuperviewTrailing(margin: trailing))
+        constraints.append(pinToSuperviewTop(margin: top, priority: priority))
+        constraints.append(pinToSuperviewBottom(margin: bottom, priority: priority))
+        constraints.append(pinToSuperviewLeading(margin: leading, priority: priority))
+        constraints.append(pinToSuperviewTrailing(margin: trailing, priority: priority))
         
         return constraints
     }
     
-    @discardableResult public func pinToSuperviewEdges(insets: UIEdgeInsets) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewEdges(insets: UIEdgeInsets, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         translatesAutoresizingMaskIntoConstraints = false;
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewTop(margin: insets.top))
-        constraints.append(pinToSuperviewBottom(margin: insets.bottom))
-        constraints.append(pinToSuperviewLeading(margin: insets.left))
-        constraints.append(pinToSuperviewTrailing(margin: insets.right))
+        constraints.append(pinToSuperviewTop(margin: insets.top, priority: priority))
+        constraints.append(pinToSuperviewBottom(margin: insets.bottom, priority: priority))
+        constraints.append(pinToSuperviewLeading(margin: insets.left, priority: priority))
+        constraints.append(pinToSuperviewTrailing(margin: insets.right, priority: priority))
         
         return constraints
     }
     
     
-    @discardableResult public func pinToSuperviewTop(margin: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.top, constant: margin)
+    @discardableResult public func pinToSuperviewTop(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return matchAttributeToSuperview(.top, constant: margin, priority: priority)
     }
     
-    @discardableResult public func pinToSuperviewBottom(margin: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.bottom, constant: -margin)
+    @discardableResult public func pinToSuperviewBottom(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return matchAttributeToSuperview(.bottom, constant: -margin, priority: priority)
     }
     
-    @discardableResult public func pinToSuperviewLeft(margin: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.left, constant: margin)
+    @discardableResult public func pinToSuperviewLeft(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return matchAttributeToSuperview(.left, constant: margin, priority: priority)
     }
     
-    @discardableResult public func pinToSuperviewRight(margin: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.right, constant: -margin)
+    @discardableResult public func pinToSuperviewRight(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return matchAttributeToSuperview(.right, constant: -margin, priority: priority)
     }
     
-    @discardableResult public func pinToSuperviewLeading(margin: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.leading, constant: margin)
+    @discardableResult public func pinToSuperviewLeading(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return matchAttributeToSuperview(.leading, constant: margin, priority: priority)
     }
     
-    @discardableResult public func pinToSuperviewTrailing(margin: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(.trailing, constant: -margin)
+    @discardableResult public func pinToSuperviewTrailing(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return matchAttributeToSuperview(.trailing, constant: -margin, priority: priority)
     }
     
     // MARK: - Pin to superview as strip
     
-    @discardableResult public func pinToSuperviewAsTopStrip(height: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewAsTopStrip(height: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewTop(margin: 0))
-        constraints.append(pinToSuperviewLeading(margin: 0))
-        constraints.append(pinToSuperviewTrailing(margin: 0))
-        constraints.append(pinHeight(height))
+        constraints.append(pinToSuperviewTop(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewLeading(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewTrailing(margin: 0, priority: priority))
+        constraints.append(pinHeight(height, priority: priority))
         
         return constraints
     }
     
-    @discardableResult public func pinToSuperviewAsBottomStrip(height: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewAsBottomStrip(height: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewBottom(margin: 0))
-        constraints.append(pinToSuperviewLeading(margin: 0))
-        constraints.append(pinToSuperviewTrailing(margin: 0))
-        constraints.append(pinHeight(height))
+        constraints.append(pinToSuperviewBottom(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewLeading(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewTrailing(margin: 0, priority: priority))
+        constraints.append(pinHeight(height, priority: priority))
         
         return constraints
     }
     
-    @discardableResult public func pinToSuperviewAsLeftStrip(width: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewAsLeftStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewLeft(margin: 0))
-        constraints.append(pinToSuperviewTop(margin: 0))
-        constraints.append(pinToSuperviewBottom(margin: 0))
-        constraints.append(pinWidth(width))
+        constraints.append(pinToSuperviewLeft(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewTop(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewBottom(margin: 0, priority: priority))
+        constraints.append(pinWidth(width, priority: priority))
         
         return constraints
     }
     
-    @discardableResult public func pinToSuperviewAsRightStrip(width: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewAsRightStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewRight(margin: 0))
-        constraints.append(pinToSuperviewTop(margin: 0))
-        constraints.append(pinToSuperviewBottom(margin: 0))
-        constraints.append(pinWidth(width))
+        constraints.append(pinToSuperviewRight(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewTop(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewBottom(margin: 0, priority: priority))
+        constraints.append(pinWidth(width, priority: priority))
         
         return constraints
     }
     
-    @discardableResult public func pinToSuperviewAsLeadingStrip(width: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewAsLeadingStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewLeading(margin: 0))
-        constraints.append(pinToSuperviewTop(margin: 0))
-        constraints.append(pinToSuperviewBottom(margin: 0))
-        constraints.append(pinWidth(width))
+        constraints.append(pinToSuperviewLeading(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewTop(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewBottom(margin: 0, priority: priority))
+        constraints.append(pinWidth(width, priority: priority))
         
         return constraints
     }
     
-    @discardableResult public func pinToSuperviewAsTrailingStrip(width: CGFloat) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewAsTrailingStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewTrailing(margin: 0))
-        constraints.append(pinToSuperviewTop(margin: 0))
-        constraints.append(pinToSuperviewBottom(margin: 0))
-        constraints.append(pinWidth(width))
+        constraints.append(pinToSuperviewTrailing(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewTop(margin: 0, priority: priority))
+        constraints.append(pinToSuperviewBottom(margin: 0, priority: priority))
+        constraints.append(pinWidth(width, priority: priority))
         
         return constraints
     }
     
     // MARK: - Pin to superview centre
     
-    @discardableResult public func pinToSuperviewCentreX(offset: CGFloat = 0) -> NSLayoutConstraint{
+    @discardableResult public func pinToSuperviewCentreX(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         return matchAttributeToSuperview(.centerX, constant: offset)
     }
     
-    @discardableResult public func pinToSuperviewCentreY(offset: CGFloat = 0) -> NSLayoutConstraint{
+    @discardableResult public func pinToSuperviewCentreY(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         return matchAttributeToSuperview(.centerY, constant: offset)
     }
     
-    @discardableResult public func pinToSuperviewCentre() -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewCentre(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewCentreX())
-        constraints.append(pinToSuperviewCentreY())
+        constraints.append(pinToSuperviewCentreX(priority: priority))
+        constraints.append(pinToSuperviewCentreY(priority: priority))
         return constraints
     }
     
     // MARK: - Match superview attributes
     
-    public func matchAttributeToSuperview(_ attribute: NSLayoutAttribute, constant: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(attribute, multiplier: 1, constant: constant)
-    }
-    
-    public func matchAttributeToSuperview(_ attribute: NSLayoutAttribute, multiplier: CGFloat) -> NSLayoutConstraint{
-        return matchAttributeToSuperview(attribute, multiplier: multiplier, constant: 0)
-    }
-    
-    public func matchAttributeToSuperview(_ attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) -> NSLayoutConstraint{
+    public func matchAttributeToSuperview(_ attribute: NSLayoutAttribute, multiplier: CGFloat = 1, constant: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -224,13 +230,17 @@ extension UIView{
                                             multiplier: multiplier,
                                             constant: constant)
         
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         superview!.addConstraint(constraint)
         return constraint
     }
     
     // MARK:- Pin views in subview heirarchy
 
-    @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         topView.translatesAutoresizingMaskIntoConstraints = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
@@ -242,11 +252,16 @@ extension UIView{
                                             attribute: .top,
                                             multiplier: 1,
                                             constant: -separation)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinViewsHorizontally(leadingView: UIView, trailingView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsHorizontally(leadingView: UIView, trailingView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         leadingView.translatesAutoresizingMaskIntoConstraints = false
         trailingView.translatesAutoresizingMaskIntoConstraints = false
@@ -258,11 +273,16 @@ extension UIView{
                                             attribute: .leading,
                                             multiplier: 1,
                                             constant: -separation)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinViewsHorizontally(leftView: UIView, rightView: UIView, separation: CGFloat = 0) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsHorizontally(leftView: UIView, rightView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         leftView.translatesAutoresizingMaskIntoConstraints = false
         rightView.translatesAutoresizingMaskIntoConstraints = false
@@ -274,11 +294,16 @@ extension UIView{
                                             attribute: .left,
                                             multiplier: 1,
                                             constant: -separation)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinViewsWidthToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsWidthToSame(firstView: UIView, secondView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         firstView.translatesAutoresizingMaskIntoConstraints = false
         secondView.translatesAutoresizingMaskIntoConstraints = false
@@ -290,11 +315,16 @@ extension UIView{
                                             attribute: .width,
                                             multiplier: 1,
                                             constant: 0)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
     
-    @discardableResult public func pinViewsHeightToSame(firstView: UIView, secondView: UIView) -> NSLayoutConstraint{
+    @discardableResult public func pinViewsHeightToSame(firstView: UIView, secondView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         firstView.translatesAutoresizingMaskIntoConstraints = false
         secondView.translatesAutoresizingMaskIntoConstraints = false
@@ -306,6 +336,11 @@ extension UIView{
                                             attribute: .height,
                                             multiplier: 1,
                                             constant: 0)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         addConstraint(constraint)
         return constraint
     }
