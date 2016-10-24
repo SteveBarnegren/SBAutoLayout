@@ -20,7 +20,7 @@ view.pinToSuperviewCenter()
 ![IMG](https://raw.githubusercontent.com/SteveBarnegren/SBAutoLayout/master/ScreenShots/Centered.png)
 
 
-Some layouts require only one line of code:
+Some views can be positioned with only one line of code:
 
 ```
 view.pinToSuperviewAsTopStrip(height: 50)
@@ -57,7 +57,7 @@ orangeView.pinAboveView(blueView, separation: 10)
 
 ## Full method list
 
-Pin width / height
+**Pin width / height**
 
 ```
 @discardableResult public func pinWidth(_ width: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
@@ -67,7 +67,7 @@ Pin width / height
 @discardableResult public func pinAspectRatio(width: CGFloat, height: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
 ```
 
-Pin to superview edges
+**Pin to superview edges**
 
 ```    
 @discardableResult public func pinToSuperviewEdges(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
@@ -90,7 +90,7 @@ Pin to superview edges
 @discardableResult public func pinToSuperviewTrailing(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
 ```
 
-Pin to superview as strip
+**Pin to superview as strip**
 
 ```   
 @discardableResult public func pinToSuperviewAsTopStrip(height: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
@@ -105,7 +105,7 @@ Pin to superview as strip
 @discardableResult public func pinToSuperviewAsTrailingStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
 ```
 
-Pin to superview center
+**Pin to superview center**
 
 ```
 @discardableResult public func pinToSuperviewCenterX(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
@@ -115,7 +115,7 @@ Pin to superview center
 @discardableResult public func pinToSuperviewCenter(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]    // MARK:- Pin to other views
 ```
 
-Pin above / below other views
+**Pin above / below other views**
 
 ```
 @discardableResult public func pinAboveView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
@@ -123,7 +123,7 @@ Pin above / below other views
 @discardableResult public func pinBelowView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
 ```
 
-Pin to left / right / leading / trailing other views
+**Pin to left / right / leading / trailing other views**
 
 ``` 
 @discardableResult public func pinToLeftOfView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
@@ -135,7 +135,7 @@ Pin to left / right / leading / trailing other views
 @discardableResult public func pinLeadingToView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
 ```    
    
-Match width / height of other views   
+**Match width / height of other views**  
     
 ```
 @discardableResult public func pinWidthToSameAsView(_ otherView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
