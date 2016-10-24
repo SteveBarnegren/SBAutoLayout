@@ -9,6 +9,35 @@
 import Foundation
 import UIKit
 
+extension String {
+    
+    func paddingMultiLineMethodSignatures() -> String {
+        
+        var string = self
+        
+        // Add padding to multi-line methods
+        let lines = string.components(separatedBy: "\n")
+        if lines.count > 1 {
+            
+            string = lines[0]
+            
+            let padding = lines[0].components(separatedBy: "(")[0].characters.count + 1
+            var paddingString = String();
+            for _ in 0..<padding {
+                paddingString.append(" ")
+            }
+            
+            for i in 1..<lines.count {
+                string.append("\n")
+                string.append(paddingString + lines[i])
+            }
+            
+        }
+        
+        return string
+    }
+}
+
 protocol AutoLayoutAction {
     // Creation
     
@@ -472,6 +501,65 @@ struct PinToRightOfView : AutoLayoutAction {
         }
     }
 }
+
+struct PinLeadingToView : AutoLayoutAction {
+    
+    let viewNum: Int
+    let otherViewNum: Int
+    let separation: Int?
+    
+    func name() -> String {
+        let viewName = ViewNamesAndColors.nameForView(number: viewNum)
+        let otherViewName = ViewNamesAndColors.nameForView(number: otherViewNum)
+        
+        if let separation = separation {
+            return "\(viewName).pinLeadingToView(\(otherViewName), separation: \(separation))"
+        }
+        else{
+            return "\(viewName).pinLeadingToView(\(otherViewName))"
+        }
+    }
+    
+    func apply(superview: UIView, subviews: [UIView]) {
+        
+        if let separation = separation {
+            subviews[viewNum].pinLeadingToView(subviews[otherViewNum], separation: CGFloat(separation))
+        }
+        else{
+            subviews[viewNum].pinLeadingToView(subviews[otherViewNum])
+        }
+    }
+}
+
+struct PinTrailingFromView : AutoLayoutAction {
+    
+    let viewNum: Int
+    let otherViewNum: Int
+    let separation: Int?
+    
+    func name() -> String {
+        let viewName = ViewNamesAndColors.nameForView(number: viewNum)
+        let otherViewName = ViewNamesAndColors.nameForView(number: otherViewNum)
+        
+        if let separation = separation {
+            return "\(viewName).pinTrailingFromView(\(otherViewName), separation: \(separation))"
+        }
+        else{
+            return "\(viewName).pinTrailingFromView(\(otherViewName))"
+        }
+    }
+    
+    func apply(superview: UIView, subviews: [UIView]) {
+        
+        if let separation = separation {
+            subviews[viewNum].pinTrailingFromView(subviews[otherViewNum], separation: CGFloat(separation))
+        }
+        else{
+            subviews[viewNum].pinTrailingFromView(subviews[otherViewNum])
+        }
+    }
+}
+
 
 struct PinWidthToSameAsView : AutoLayoutAction {
     

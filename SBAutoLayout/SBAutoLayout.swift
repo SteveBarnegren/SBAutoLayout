@@ -290,6 +290,31 @@ extension UIView{
         return otherView.pinToLeftOfView(self, separation: separation, priority: priority)
     }
     
+    @discardableResult public func pinTrailingFromView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        otherView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .leading,
+                                            relatedBy: .equal,
+                                            toItem: otherView,
+                                            attribute: .trailing,
+                                            multiplier: 1,
+                                            constant: separation)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
+        commonSuperviewWithView(otherView).addConstraint(constraint)
+        return constraint
+    }
+    
+    @discardableResult public func pinLeadingToView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return otherView.pinTrailingFromView(self, separation: separation, priority: priority)
+    }
+    
     @discardableResult public func pinWidthToSameAsView(_ otherView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -332,73 +357,6 @@ extension UIView{
         return constraint
     }
 
-
-
-    // MARK:- Pin views in subview heirarchy
-
-    @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        
-        topView.translatesAutoresizingMaskIntoConstraints = false
-        bottomView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraint = NSLayoutConstraint(item: topView,
-                                            attribute: .bottom,
-                                            relatedBy: .equal,
-                                            toItem: bottomView,
-                                            attribute: .top,
-                                            multiplier: 1,
-                                            constant: -separation)
-        
-        if let priority = priority {
-            constraint.priority = priority
-        }
-        
-        addConstraint(constraint)
-        return constraint
-    }
-    
-    @discardableResult public func pinViewsHorizontally(leadingView: UIView, trailingView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        
-        leadingView.translatesAutoresizingMaskIntoConstraints = false
-        trailingView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraint = NSLayoutConstraint(item: leadingView,
-                                            attribute: .trailing,
-                                            relatedBy: .equal,
-                                            toItem: trailingView,
-                                            attribute: .leading,
-                                            multiplier: 1,
-                                            constant: -separation)
-        
-        if let priority = priority {
-            constraint.priority = priority
-        }
-        
-        addConstraint(constraint)
-        return constraint
-    }
-    
-    @discardableResult public func pinViewsHorizontally(leftView: UIView, rightView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        
-        leftView.translatesAutoresizingMaskIntoConstraints = false
-        rightView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraint = NSLayoutConstraint(item: leftView,
-                                            attribute: .right,
-                                            relatedBy: .equal,
-                                            toItem: rightView,
-                                            attribute: .left,
-                                            multiplier: 1,
-                                            constant: -separation)
-        
-        if let priority = priority {
-            constraint.priority = priority
-        }
-        
-        addConstraint(constraint)
-        return constraint
-    }
-    
     @discardableResult public func pinViewsWidthToSame(firstView: UIView, secondView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         
         firstView.translatesAutoresizingMaskIntoConstraints = false
@@ -440,6 +398,8 @@ extension UIView{
         addConstraint(constraint)
         return constraint
     }
+    
+    
     
     // MARK:- Get common superview
     

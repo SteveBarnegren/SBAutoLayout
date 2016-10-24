@@ -240,7 +240,7 @@ class ViewController: UIViewController {
                 ])
         )
         
-        // Pin views horizontally (left / right)
+        // Pin to right of view
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 // view 0
@@ -252,14 +252,14 @@ class ViewController: UIViewController {
                 PinToSuperviewCenterY(viewNum: 1, offset: nil),
                 PinHeight(viewNum: 1, height: 50),
                 PinAspectRatio(viewNum: 1, width: 1, height: 1),
-                PinToRightOfView(viewNum: 1, otherViewNum: 0, separation: 5)
+                PinTrailingFromView(viewNum: 1, otherViewNum: 0, separation: 5)
 
                 ])
         )
         
         
         
-        // Pin views horizontally (leading / trailing)
+        // Pin to left of view
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 // view 0
@@ -271,13 +271,12 @@ class ViewController: UIViewController {
                 PinToSuperviewCenterY(viewNum: 0, offset: nil),
                 PinHeight(viewNum: 0, height: 50),
                 PinAspectRatio(viewNum: 0, width: 1, height: 1),
-                PinToLeftOfView(viewNum: 0, otherViewNum: 1, separation: 5),
+                PinLeadingToView(viewNum: 0, otherViewNum: 1, separation: 5),
                 ])
         )
         
        
-        
-        // Pin views width to same
+        // Pin leading to view
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 
@@ -285,19 +284,38 @@ class ViewController: UIViewController {
                 PinToSuperviewLeft(viewNum: 0, margin: 20),
                 PinToSuperviewTop(viewNum: 0, margin: 20),
                 PinToSuperviewBottom(viewNum: 0, margin: 200),
+                PinWidth(viewNum: 0, width: 40),
                 
                 // view 1
                 PinToSuperviewRight(viewNum: 1, margin: 20),
                 PinToSuperviewTop(viewNum: 1, margin: 20),
                 PinToSuperviewBottom(viewNum: 1, margin: 200),
                 PinToRightOfView(viewNum: 1, otherViewNum: 0, separation: 20),
-                PinWidthToSameAsView(viewNum: 1, otherViewNum: 0)
+                ])
+        )
+        
+        // Pin views width to same
+        items.append(
+            ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
+                
+                // view 1
+                PinToSuperviewRight(viewNum: 1, margin: 20),
+                PinToSuperviewTop(viewNum: 1, margin: 20),
+                PinToSuperviewBottom(viewNum: 1, margin: 200),
+                
+                // view 0
+                PinToSuperviewLeft(viewNum: 0, margin: 20),
+                PinToSuperviewTop(viewNum: 0, margin: 20),
+                PinToSuperviewBottom(viewNum: 0, margin: 200),
+                PinToLeftOfView(viewNum: 0, otherViewNum: 1, separation: 20),
+                PinWidthToSameAsView(viewNum: 0, otherViewNum: 1),
+
                 ])
         )
  
 
         
-        // Pin views heights to same
+        // Pin leading
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .aboveView(viewNumber: 0), layoutActions: [
                 
@@ -314,7 +332,7 @@ class ViewController: UIViewController {
                 PinHeightToSameAsView(viewNum: 1, otherViewNum: 0)
                 ])
         )
-
+        
         return items
     }
     
@@ -452,7 +470,7 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         redraw()
     }
-
+    
 }
 
 
