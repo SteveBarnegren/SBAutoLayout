@@ -198,21 +198,21 @@ extension UIView{
         return constraints
     }
     
-    // MARK: - Pin to superview centre
+    // MARK: - Pin to superview center
     
-    @discardableResult public func pinToSuperviewCentreX(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+    @discardableResult public func pinToSuperviewCenterX(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         return matchAttributeToSuperview(.centerX, constant: offset)
     }
     
-    @discardableResult public func pinToSuperviewCentreY(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+    @discardableResult public func pinToSuperviewCenterY(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
         return matchAttributeToSuperview(.centerY, constant: offset)
     }
     
-    @discardableResult public func pinToSuperviewCentre(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
+    @discardableResult public func pinToSuperviewCenter(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{
         
         var constraints = [NSLayoutConstraint]()
-        constraints.append(pinToSuperviewCentreX(priority: priority))
-        constraints.append(pinToSuperviewCentreY(priority: priority))
+        constraints.append(pinToSuperviewCenterX(priority: priority))
+        constraints.append(pinToSuperviewCenterY(priority: priority))
         return constraints
     }
     

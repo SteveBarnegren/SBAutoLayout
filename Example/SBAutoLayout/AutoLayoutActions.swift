@@ -326,7 +326,7 @@ struct PinToSuperviewCenter : AutoLayoutAction {
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewCentre()
+        subviews[viewNum].pinToSuperviewCenter()
     }
 }
 
@@ -349,10 +349,10 @@ struct PinToSuperviewCenterX : AutoLayoutAction {
     func apply(superview: UIView, subviews: [UIView]) {
         
         if let offset = offset {
-            subviews[viewNum].pinToSuperviewCentreX(offset: CGFloat(offset))
+            subviews[viewNum].pinToSuperviewCenterX(offset: CGFloat(offset))
         }
         else{
-            subviews[viewNum].pinToSuperviewCentreX()
+            subviews[viewNum].pinToSuperviewCenterX()
         }
     }
 }
@@ -366,20 +366,20 @@ struct PinToSuperviewCenterY : AutoLayoutAction {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
         
         if let offset = offset {
-            return "\(viewName).pinToSuperviewCentreY(offset: \(offset))"
+            return "\(viewName).pinToSuperviewCenterY(offset: \(offset))"
         }
         else{
-            return "\(viewName).pinToSuperviewCentreY()"
+            return "\(viewName).pinToSuperviewCenterY()"
         }
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
         
         if let offset = offset {
-            subviews[viewNum].pinToSuperviewCentreY(offset: CGFloat(offset))
+            subviews[viewNum].pinToSuperviewCenterY(offset: CGFloat(offset))
         }
         else{
-            subviews[viewNum].pinToSuperviewCentreY()
+            subviews[viewNum].pinToSuperviewCenterY()
         }
     }
 }
