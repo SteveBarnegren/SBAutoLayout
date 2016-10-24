@@ -17,7 +17,7 @@ view.pinWidth(100)
 view.pinHeight(100)
 view.pinToSuperviewCenter()
 ```
-![IMG](https://github.com/SteveBarnegren/SBAutoLayout/raw/master/Screenshots/Centered.png)
+![IMG](https://raw.githubusercontent.com/SteveBarnegren/SBAutoLayout/master/ScreenShots/Centered.png)
 
 
 Some layouts require only one line of code:
@@ -25,7 +25,7 @@ Some layouts require only one line of code:
 ```
 view.pinToSuperviewAsTopStrip(height: 50)
 ```
-![IMG](https://github.com/SteveBarnegren/SBAutoLayout/raw/master/Screenshots/TopStrip.png)
+![IMG](https://raw.githubusercontent.com/SteveBarnegren/SBAutoLayout/master/ScreenShots/TopStrip.png)
 
 All methods return generated constraints. Handy for if you need to remove or change them later. 
 
@@ -38,7 +38,7 @@ view.pinToSuperviewTrailing(margin: 15)
 // ...Later
 topConstraint.constant = 30
 ```
-![IMG](https://github.com/SteveBarnegren/SBAutoLayout/raw/master/Screenshots/TopStrip.png)
+![IMG](https://raw.githubusercontent.com/SteveBarnegren/SBAutoLayout/master/ScreenShots/SuperviewEdges.png)
 
 Multiple views? Sure.
 
@@ -53,7 +53,7 @@ orangeView.pinAspectRatio(width: 1, height: 1)
 orangeView.pinAboveView(blueView, separation: 10)
 ```
 
-![IMG](https://github.com/SteveBarnegren/SBAutoLayout/raw/master/Screenshots/TwoViews.png)
+![IMG](https://raw.githubusercontent.com/SteveBarnegren/SBAutoLayout/master/ScreenShots/TwoViews.png)
 
 ## Full method list
 
