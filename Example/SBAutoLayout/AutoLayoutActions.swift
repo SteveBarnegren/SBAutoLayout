@@ -38,13 +38,9 @@ extension String {
     }
 }
 
-protocol AutoLayoutAction {
-    // Creation
-    
+protocol AutoLayoutAction {    
     func name() -> String
     func apply(superview: UIView, subviews: [UIView])
-    // Name
-    // Perform (take relavent views)
 }
 
 // MARK: - Pin Width / Height
