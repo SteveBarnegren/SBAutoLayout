@@ -64,74 +64,73 @@ class ViewController: UIViewController {
         
         var items = [ExampleItem]()
         
-        
-        /*
+      
         // Pin to superview edges
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .center, layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewEdges(viewNum: 0))
+                PinToSuperviewEdges(viewNum: 0)
                 ])
         )
         
         // Pin to super view edges separately with margins (using left / right)
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .centerInView(viewNumber: 0), layoutActions: [
-                            AutoLayoutAction(layoutFunction: .pinToSuperviewTop(viewNum: 0, margin: 20)),
-                            AutoLayoutAction(layoutFunction: .pinToSuperviewBottom(viewNum: 0, margin: 20)),
-                            AutoLayoutAction(layoutFunction: .pinToSuperviewLeft(viewNum: 0, margin: 20)),
-                            AutoLayoutAction(layoutFunction: .pinToSuperviewRight(viewNum: 0, margin: 20))
+                PinToSuperviewTop(viewNum: 0, margin: 20),
+                PinToSuperviewBottom(viewNum: 0, margin: 20),
+                PinToSuperviewLeft(viewNum: 0, margin: 20),
+                PinToSuperviewRight(viewNum: 0, margin: 20),
                 ])
         )
-        
+       
         // Pin to super view edges separately with margins (using leading / trailing)
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .centerInView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewTop(viewNum: 0, margin: 60)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewBottom(viewNum: 0, margin: 40)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewLeading(viewNum: 0, margin: 15)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewTrailing(viewNum: 0, margin: 15))
+                PinToSuperviewTop(viewNum: 0, margin: 60),
+                PinToSuperviewBottom(viewNum: 0, margin: 40),
+                PinToSuperviewLeading(viewNum: 0, margin: 15),
+                PinToSuperviewTrailing(viewNum: 0, margin: 15),
                 ])
         )
         
         // Pin as top strip
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .belowView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsTopStrip(viewNum: 0, height: 50)),
+                PinToSuperviewAsTopStrip(viewNum: 0, height: 50)
                 ])
         )
         
         // Pin as bottom strip
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .aboveView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsBottomStrip(viewNum: 0, height: 150)),
+                PinToSuperviewAsBottomStrip(viewNum: 0, height: 150)
                 ])
         )
         
         // Pin as left strip
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .rightOfView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsLeftStrip(viewNum: 0, width: 15)),
+                PinToSuperviewAsLeftStrip(viewNum: 0, width: 15)
                 ])
         )
         
         // Pin as right strip
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .leftOfView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsRightStrip(viewNum: 0, width: 60)),
+                PinToSuperviewAsRightStrip(viewNum: 0, width: 60)
                 ])
         )
         
         // Pin as leading strip
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .rightOfView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsLeadingStrip(viewNum: 0, width: 40)),
+                PinToSuperviewAsLeadingStrip(viewNum: 0, width: 40)
                 ])
         )
         
         // Pin as trailing strip
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .leftOfView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsTrailingStrip(viewNum: 0, width: 20)),
+                PinToSuperviewAsTrailingStrip(viewNum: 0, width: 20)
                 ])
         )
 
@@ -139,89 +138,90 @@ class ViewController: UIViewController {
         // Pin to center with width / height
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .aboveView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenter(viewNum: 0)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 80)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 0, width: 250)),
+                PinToSuperviewCenter(viewNum: 0),
+                PinHeight(viewNum: 0, height: 80),
+                PinWidth(viewNum: 0, width: 250)
                 ])
         )
         
         // Pin to center with width / height and Y offset
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .belowView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterX(viewNum: 0, offset: nil)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterY(viewNum: 0, offset: -100)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 60)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 0, width: 100)),
+                PinToSuperviewCenterX(viewNum: 0, offset: nil),
+                PinToSuperviewCenterY(viewNum: 0, offset: -100),
+                PinHeight(viewNum: 0, height: 60),
+                PinWidth(viewNum: 0, width: 100)
                 ])
         )
-        
+     
         // Pin to center with width / height and Y and X offset
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .belowView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterX(viewNum: 0, offset: -100)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterY(viewNum: 0, offset: -100)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 50)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 0, width: 50)),
+                PinToSuperviewCenterX(viewNum: 0, offset: -100),
+                PinToSuperviewCenterY(viewNum: 0, offset: -100),
+                PinHeight(viewNum: 0, height: 50),
+                PinWidth(viewNum: 0, width: 50)
                 ])
         )
         
         // Pin to center with width / height and Y and X offset
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .aboveView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterX(viewNum: 0, offset: 70)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterY(viewNum: 0, offset: 70)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 100)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 0, width: 100)),
+                PinToSuperviewCenterX(viewNum: 0, offset: 70),
+                PinToSuperviewCenterY(viewNum: 0, offset: 70),
+                PinHeight(viewNum: 0, height: 100),
+                PinWidth(viewNum: 0, width: 100)
                 ])
         )
-        
+      
         // Pin to center with width / aspect ratio
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .aboveView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenter(viewNum: 0)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 100)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 0, width: 1, height: 1))
+                PinToSuperviewCenter(viewNum: 0),
+                PinHeight(viewNum: 0, height: 100),
+                PinAspectRatio(viewNum: 0, width: 1, height: 1)
                 ])
         )
         
         // Pin to center with width / aspect ratio (wider)
         items.append(
             ExampleItem(numberOfViews: 1, textPosition: .aboveView(viewNumber: 0), layoutActions: [
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenter(viewNum: 0)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 100)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 0, width: 3, height: 1))
+                PinToSuperviewCenter(viewNum: 0),
+                PinHeight(viewNum: 0, height: 100),
+                PinAspectRatio(viewNum: 0, width: 3, height: 1)
                 ])
         )
  
- 
+  
         // Pin multiple views
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenter(viewNum: 0)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 100)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 0, width: 100)),
+                PinToSuperviewCenter(viewNum: 0),
+                PinHeight(viewNum: 0, height: 100),
+                PinWidth(viewNum: 0, width: 100),
                 
                 // view 1
-                //AutoLayoutAction(layoutFunction: .pinToSuperviewCenterY(viewNum: 1, offset: -200)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterX(viewNum: 1, offset: nil)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 1, height: 80)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 1, width: 80)),
-                AutoLayoutAction(layoutFunction: .pinViewsVertically(topViewNum: 1, bottomViewNum: 0, separation: 10)),
+                PinToSuperviewCenterX(viewNum: 1, offset: nil),
+                PinHeight(viewNum: 1, height: 80),
+                PinWidth(viewNum: 1, width: 80),
+                PinAboveView(viewNum: 1, otherViewNum: 0, separation: 10)
                 ])
         )
+        
+        
         
         // Pin multiple views
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 1), layoutActions: [
                 // view 1
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsTopStrip(viewNum: 1, height: 60)),
+                PinToSuperviewAsTopStrip(viewNum: 1, height: 60),
                 
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterX(viewNum: 0, offset: nil)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 50)),
-                AutoLayoutAction(layoutFunction: .pinWidth(viewNum: 0, width: 50)),
-                AutoLayoutAction(layoutFunction: .pinViewsVertically(topViewNum: 1, bottomViewNum: 0, separation: 25)),
+                PinToSuperviewCenterX(viewNum: 0, offset: nil),
+                PinHeight(viewNum: 0, height: 50),
+                PinWidth(viewNum: 0, width: 50),
+                PinBelowView(viewNum: 0, otherViewNum: 1, separation: 25)
                 ])
         )
         
@@ -229,13 +229,14 @@ class ViewController: UIViewController {
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .aboveView(viewNumber: 1), layoutActions: [
                 // view 1
-                AutoLayoutAction(layoutFunction: .pinToSuperviewAsBottomStrip(viewNum: 0, height: 80)),
+                PinToSuperviewAsBottomStrip(viewNum: 0, height: 80),
                 
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewLeft(viewNum: 1, margin: 5)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 1, height: 50)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 1, width: 1, height: 1)),
-                AutoLayoutAction(layoutFunction: .pinViewsVertically(topViewNum: 1, bottomViewNum: 0, separation: 5)),
+                PinToSuperviewLeft(viewNum: 1, margin: 5),
+                PinHeight(viewNum: 1, height: 50),
+                PinAspectRatio(viewNum: 1, width: 1, height: 1),
+                PinAboveView(viewNum: 1, otherViewNum: 0, separation: 5)
+
                 ])
         )
         
@@ -243,69 +244,74 @@ class ViewController: UIViewController {
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenter(viewNum: 0)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 100)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 0, width: 1, height: 1)),
+                PinToSuperviewCenter(viewNum: 0),
+                PinHeight(viewNum: 0, height: 100),
+                PinAspectRatio(viewNum: 0, width: 1, height: 1),
 
                 // view 1
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterY(viewNum: 1, offset: nil)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 1, height: 50)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 1, width: 1, height: 1)),
-                AutoLayoutAction(layoutFunction: .pinViewsHorizontallyLeftRight(leftViewNum: 0, rightViewNum: 1, separation: 5)),
+                PinToSuperviewCenterY(viewNum: 1, offset: nil),
+                PinHeight(viewNum: 1, height: 50),
+                PinAspectRatio(viewNum: 1, width: 1, height: 1),
+                PinToRightOfView(viewNum: 1, otherViewNum: 0, separation: 5)
+
                 ])
         )
+        
+        
         
         // Pin views horizontally (leading / trailing)
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenter(viewNum: 1)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 1, height: 100)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 1, width: 1, height: 1)),
+                PinToSuperviewCenter(viewNum: 1),
+                PinHeight(viewNum: 1, height: 100),
+                PinAspectRatio(viewNum: 1, width: 1, height: 1),
                 
                 // view 1
-                AutoLayoutAction(layoutFunction: .pinToSuperviewCenterY(viewNum: 0, offset: nil)),
-                AutoLayoutAction(layoutFunction: .pinHeight(viewNum: 0, height: 50)),
-                AutoLayoutAction(layoutFunction: .pinAspectRatio(viewNum: 0, width: 1, height: 1)),
-                AutoLayoutAction(layoutFunction: .pinViewsHorizontallyLeadingTrailing(leadingViewNum: 0, trailingViewNum: 1, separation: 5)),
+                PinToSuperviewCenterY(viewNum: 0, offset: nil),
+                PinHeight(viewNum: 0, height: 50),
+                PinAspectRatio(viewNum: 0, width: 1, height: 1),
+                PinToLeftOfView(viewNum: 0, otherViewNum: 1, separation: 5),
                 ])
         )
+        
+       
         
         // Pin views width to same
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .belowView(viewNumber: 0), layoutActions: [
                 
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewLeft(viewNum: 0, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewTop(viewNum: 0, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewBottom(viewNum: 0, margin: 200)),
+                PinToSuperviewLeft(viewNum: 0, margin: 20),
+                PinToSuperviewTop(viewNum: 0, margin: 20),
+                PinToSuperviewBottom(viewNum: 0, margin: 200),
                 
                 // view 1
-                AutoLayoutAction(layoutFunction: .pinToSuperviewRight(viewNum: 1, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewTop(viewNum: 1, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewBottom(viewNum: 1, margin: 200)),
-                AutoLayoutAction(layoutFunction: .pinViewsHorizontallyLeftRight(leftViewNum: 0, rightViewNum: 1, separation: 20)),
-                AutoLayoutAction(layoutFunction: .pinViewsWidthToSame(firstViewNum: 0, secondViewNum: 1)),
+                PinToSuperviewRight(viewNum: 1, margin: 20),
+                PinToSuperviewTop(viewNum: 1, margin: 20),
+                PinToSuperviewBottom(viewNum: 1, margin: 200),
+                PinToRightOfView(viewNum: 1, otherViewNum: 0, separation: 20),
+                PinWidthToSameAsView(viewNum: 1, otherViewNum: 0)
                 ])
         )
  
- */
+
         
         // Pin views heights to same
         items.append(
             ExampleItem(numberOfViews: 2, textPosition: .aboveView(viewNumber: 0), layoutActions: [
                 
                 // view 0
-                AutoLayoutAction(layoutFunction: .pinToSuperviewTop(viewNum: 0, margin: 200)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewLeft(viewNum: 0, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewRight(viewNum: 0, margin: 20)),
+                PinToSuperviewTop(viewNum: 0, margin: 200),
+                PinToSuperviewLeft(viewNum: 0, margin: 20),
+                PinToSuperviewRight(viewNum: 0, margin: 20),
                 
                 // view 1
-                AutoLayoutAction(layoutFunction: .pinToSuperviewBottom(viewNum: 1, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewLeft(viewNum: 1, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinToSuperviewRight(viewNum: 1, margin: 20)),
-                AutoLayoutAction(layoutFunction: .pinViewsVertically(topViewNum: 0, bottomViewNum: 1, separation: 20)),
-                AutoLayoutAction(layoutFunction: .pinViewsHeightToSame(firstViewNum: 0, secondViewNum: 1)),
+                PinToSuperviewBottom(viewNum: 1, margin: 20),
+                PinToSuperviewLeft(viewNum: 1, margin: 20),
+                PinToSuperviewRight(viewNum: 1, margin: 20),
+                PinBelowView(viewNum: 1, otherViewNum: 0, separation: 20),
+                PinHeightToSameAsView(viewNum: 1, otherViewNum: 0)
                 ])
         )
 

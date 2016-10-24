@@ -238,6 +238,102 @@ extension UIView{
         return constraint
     }
     
+    // MARK:- Pin to other views
+
+    @discardableResult public func pinAboveView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        otherView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .bottom,
+                                            relatedBy: .equal,
+                                            toItem: otherView,
+                                            attribute: .top,
+                                            multiplier: 1,
+                                            constant: -separation)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
+        commonSuperviewWithView(otherView).addConstraint(constraint)
+        return constraint
+    }
+    
+    @discardableResult public func pinBelowView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return otherView.pinAboveView(self, separation: separation, priority: priority)
+    }
+    
+    @discardableResult public func pinToLeftOfView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        otherView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .right,
+                                            relatedBy: .equal,
+                                            toItem: otherView,
+                                            attribute: .left,
+                                            multiplier: 1,
+                                            constant: -separation)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
+        commonSuperviewWithView(otherView).addConstraint(constraint)
+        return constraint
+    }
+    
+    @discardableResult public func pinToRightOfView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        return otherView.pinToLeftOfView(self, separation: separation, priority: priority)
+    }
+    
+    @discardableResult public func pinWidthToSameAsView(_ otherView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        otherView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .width,
+                                            relatedBy: .equal,
+                                            toItem: otherView,
+                                            attribute: .width,
+                                            multiplier: 1,
+                                            constant: 0)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
+        commonSuperviewWithView(otherView).addConstraint(constraint)
+        return constraint
+    }
+    
+    @discardableResult public func pinHeightToSameAsView(_ otherView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        otherView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .height,
+                                            relatedBy: .equal,
+                                            toItem: otherView,
+                                            attribute: .height,
+                                            multiplier: 1,
+                                            constant: 0)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
+        commonSuperviewWithView(otherView).addConstraint(constraint)
+        return constraint
+    }
+
+
+
     // MARK:- Pin views in subview heirarchy
 
     @discardableResult public func pinViewsVertically(topView: UIView, bottomView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
@@ -343,6 +439,25 @@ extension UIView{
         
         addConstraint(constraint)
         return constraint
+    }
+    
+    // MARK:- Get common superview
+    
+    func commonSuperviewWithView(_ otherView: UIView) -> UIView {
+        
+        var testView = self
+        
+        while otherView.isDescendant(of: testView) == false {
+            
+            guard let superview = testView.superview else {
+                print("Views must share a common superview")
+                abort()
+            }
+            
+            testView = superview
+        }
+        
+       return testView
     }
 
 }

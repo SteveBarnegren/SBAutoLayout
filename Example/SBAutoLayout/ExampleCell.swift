@@ -152,7 +152,7 @@ class ExampleCell: UICollectionViewCell {
         
         // Apply autolayout actions
         for action in item.layoutActions {
-            action.apply(superView: contentView, subViews: views)
+            action.apply(superview: contentView, subviews: views)
         }
         
         // Update label

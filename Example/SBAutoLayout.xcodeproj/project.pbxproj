@@ -14,6 +14,7 @@
 		097B4CE81DB7D38B00206D7E /* IntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B4CE61DB7D38B00206D7E /* IntroCell.swift */; };
 		097B4CE91DB7D38B00206D7E /* IntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097B4CE71DB7D38B00206D7E /* IntroCell.xib */; };
 		097B4CEB1DBA57FF00206D7E /* ViewNamesAndColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B4CEA1DBA57FF00206D7E /* ViewNamesAndColors.swift */; };
+		097B4CF21DBE467D00206D7E /* AutoLayoutActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097B4CF11DBE467D00206D7E /* AutoLayoutActions.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		097B4CE61DB7D38B00206D7E /* IntroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroCell.swift; sourceTree = "<group>"; };
 		097B4CE71DB7D38B00206D7E /* IntroCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroCell.xib; sourceTree = "<group>"; };
 		097B4CEA1DBA57FF00206D7E /* ViewNamesAndColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNamesAndColors.swift; sourceTree = "<group>"; };
+		097B4CF11DBE467D00206D7E /* AutoLayoutActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutActions.swift; sourceTree = "<group>"; };
 		2B78B624A281C44EA3A5C602 /* Pods_SBAutoLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SBAutoLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* SBAutoLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBAutoLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				097B4CDE1DB7AE2000206D7E /* RectangleDrawingView.swift */,
+				097B4CF11DBE467D00206D7E /* AutoLayoutActions.swift */,
 				097B4CDC1DB66C4100206D7E /* ExampleItem.swift */,
 				097B4CE41DB7CF1400206D7E /* AutolayoutExampleCell.swift */,
 				097B4CDA1DB6669900206D7E /* ExampleCell.swift */,
@@ -285,6 +288,7 @@
 				097B4CE51DB7CF1400206D7E /* AutolayoutExampleCell.swift in Sources */,
 				097B4CDB1DB6669900206D7E /* ExampleCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				097B4CF21DBE467D00206D7E /* AutoLayoutActions.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				097B4CDD1DB66C4100206D7E /* ExampleItem.swift in Sources */,
 				097B4CEB1DBA57FF00206D7E /* ViewNamesAndColors.swift in Sources */,

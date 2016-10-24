@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-struct AutoLayoutAction {
+
+struct AutoLayoutAction_IVE_CREATED_A_MONSTER_DONT_WORRY_ILL_FIX_IT {
     
     enum LayoutFuction {
         
@@ -110,10 +111,10 @@ struct AutoLayoutAction {
                 // Pin multiple views
             case .pinViewsVertically(let topViewNum, let bottomViewNum, let separation):
                 if let separation = separation {
-                    return "\(ViewNamesAndColors.mainViewName()).pinViewsVertically(topView: $\(topViewNum),\nbottomView: $\(bottomViewNum),\nseparation: \(separation))"
+                    return "$\(topViewNum).pinAboveView(otherView: $\(bottomViewNum),\nseparation: \(separation))"
                 }
                 else{
-                    return "\(ViewNamesAndColors.mainViewName()).pinViewsVertically(topView: $\(topViewNum), bottomView: $\(bottomViewNum))"
+                    return "$\(topViewNum).pinAboveView(otherView: $\(bottomViewNum))"
                 }
                 
             case .pinViewsHorizontallyLeftRight(let leftViewNum, let rightViewNum, let separation):
@@ -248,10 +249,12 @@ struct AutoLayoutAction {
             // Pin multiple views
         case .pinViewsVertically(let topViewNum, let bottomViewNum, let separation):
             if let separation = separation {
-                superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum], separation: CGFloat(separation))
+                subViews[topViewNum].pinAboveView(subViews[bottomViewNum], separation: CGFloat(separation))
+                //superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum], separation: CGFloat(separation))
             }
             else{
-                superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum])
+                subViews[topViewNum].pinAboveView(subViews[bottomViewNum])
+                //superView.pinViewsVertically(topView: subViews[topViewNum], bottomView: subViews[bottomViewNum])
             }
             
         case .pinViewsHorizontallyLeftRight(let leftViewNum, let rightViewNum, let separation):
