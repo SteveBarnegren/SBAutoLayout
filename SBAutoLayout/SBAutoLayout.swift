@@ -335,50 +335,6 @@ extension UIView{
         return constraint
     }
 
-    @discardableResult public func pinViewsWidthToSame(firstView: UIView, secondView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        
-        firstView.translatesAutoresizingMaskIntoConstraints = false
-        secondView.translatesAutoresizingMaskIntoConstraints = false
-
-        let constraint = NSLayoutConstraint(item: firstView,
-                                            attribute: .width,
-                                            relatedBy: .equal,
-                                            toItem: secondView,
-                                            attribute: .width,
-                                            multiplier: 1,
-                                            constant: 0)
-        
-        if let priority = priority {
-            constraint.priority = priority
-        }
-        
-        addConstraint(constraint)
-        return constraint
-    }
-    
-    @discardableResult public func pinViewsHeightToSame(firstView: UIView, secondView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
-        
-        firstView.translatesAutoresizingMaskIntoConstraints = false
-        secondView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraint = NSLayoutConstraint(item: firstView,
-                                            attribute: .height,
-                                            relatedBy: .equal,
-                                            toItem: secondView,
-                                            attribute: .height,
-                                            multiplier: 1,
-                                            constant: 0)
-        
-        if let priority = priority {
-            constraint.priority = priority
-        }
-        
-        addConstraint(constraint)
-        return constraint
-    }
-    
-    
-    
     // MARK:- Private
     
     private func matchAttributeToSuperview(_ attribute: NSLayoutAttribute,
