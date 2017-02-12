@@ -216,6 +216,71 @@ extension UIView{
         return constraints
     }
     
+    // MARK: - Pin Outside Superview
+    @discardableResult public func pinOutsideSuperviewBottom(separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .top,
+                                            relatedBy: .equal,
+                                            toItem: superview,
+                                            attribute: .bottom,
+                                            multiplier: 1,
+                                            constant: separation)
+        superview?.addConstraint(constraint)
+        
+        return constraint
+    }
+    
+    @discardableResult public func pinOutsideSuperviewTop(separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: superview,
+                                            attribute: .top,
+                                            relatedBy: .equal,
+                                            toItem: self,
+                                            attribute: .bottom,
+                                            multiplier: 1,
+                                            constant: separation)
+        superview?.addConstraint(constraint)
+        
+        return constraint
+    }
+    
+    @discardableResult public func pinOutsideSuperviewLeft(separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: superview,
+                                            attribute: .left,
+                                            relatedBy: .equal,
+                                            toItem: self,
+                                            attribute: .right,
+                                            multiplier: 1,
+                                            constant: separation)
+        superview?.addConstraint(constraint)
+        
+        return constraint
+    }
+    
+    @discardableResult public func pinOutsideSuperviewRight(separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .left,
+                                            relatedBy: .equal,
+                                            toItem: superview,
+                                            attribute: .right,
+                                            multiplier: 1,
+                                            constant: separation)
+        superview?.addConstraint(constraint)
+
+        return constraint
+    }
+    
     // MARK:- Pin to other views
 
     @discardableResult public func pinAboveView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint{
