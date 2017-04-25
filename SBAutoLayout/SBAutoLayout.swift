@@ -237,6 +237,10 @@ extension UIView{
         
         translatesAutoresizingMaskIntoConstraints = false
         
+        guard let superview = superview else {
+            bailNoSuperview()
+        }
+        
         let constraint = NSLayoutConstraint(item: superview,
                                             attribute: .top,
                                             relatedBy: .equal,
@@ -244,7 +248,7 @@ extension UIView{
                                             attribute: .bottom,
                                             multiplier: 1,
                                             constant: separation)
-        superview?.addConstraint(constraint)
+        superview.addConstraint(constraint)
         
         return constraint
     }
@@ -253,6 +257,10 @@ extension UIView{
         
         translatesAutoresizingMaskIntoConstraints = false
         
+        guard let superview = superview else {
+            bailNoSuperview()
+        }
+        
         let constraint = NSLayoutConstraint(item: superview,
                                             attribute: .left,
                                             relatedBy: .equal,
@@ -260,7 +268,7 @@ extension UIView{
                                             attribute: .right,
                                             multiplier: 1,
                                             constant: separation)
-        superview?.addConstraint(constraint)
+        superview.addConstraint(constraint)
         
         return constraint
     }
@@ -442,5 +450,9 @@ extension UIView{
         
        return testView
     }
-
+    
+    func bailNoSuperview() -> Never {
+        fatalError("Add view to superview before setting constraints!")
+    }
+    
 }
