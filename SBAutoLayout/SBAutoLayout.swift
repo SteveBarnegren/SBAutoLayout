@@ -7,9 +7,17 @@
 //
 
 import Foundation
-import UIKit
 
-extension UIView{
+#if os(OSX)
+    import AppKit
+    public typealias UIView = NSView
+    public typealias UILayoutPriority = NSLayoutPriority
+    public typealias UIEdgeInsets = EdgeInsets
+#else
+    import UIKit
+#endif
+
+extension UIView {
     
     // MARK: - Pin Width / Height
     
@@ -441,7 +449,7 @@ extension UIView{
         while otherView.isDescendant(of: testView) == false {
             
             guard let superview = testView.superview else {
-                print("Views must share a common superview")
+                Swift.print("Views must share a common superview")
                 abort()
             }
             

@@ -2,10 +2,4 @@ use_frameworks!
 
 target 'SBAutoLayout_Example' do
   pod 'SBAutoLayout', :path => '../'
-
-  target 'SBAutoLayout_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
