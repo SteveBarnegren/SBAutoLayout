@@ -1,5 +1,0 @@
-use_frameworks!
-
-target 'SBAutoLayout_Example' do
-  pod 'SBAutoLayout', :path => '../'
-end

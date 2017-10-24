@@ -20,8 +20,25 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		C35BB68F7BCF002F323BA8CA /* Pods_SBAutoLayout_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B78B624A281C44EA3A5C602 /* Pods_SBAutoLayout_Example.framework */; };
+		677F42461F9F242F00BBD071 /* SBAutoLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677F42421F9F241200BBD071 /* SBAutoLayout.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		677F42411F9F241200BBD071 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 677F423C1F9F241200BBD071 /* SBAutoLayout.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 677F421E1F9F235700BBD071;
+			remoteInfo = SBAutoLayout;
+		};
+		677F42431F9F241200BBD071 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 677F423C1F9F241200BBD071 /* SBAutoLayout.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 677F42271F9F235700BBD071;
+			remoteInfo = SBAutoLayoutTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		097B4CDA1DB6669900206D7E /* ExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
@@ -32,7 +49,6 @@
 		097B4CE71DB7D38B00206D7E /* IntroCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroCell.xib; sourceTree = "<group>"; };
 		097B4CEA1DBA57FF00206D7E /* ViewNamesAndColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNamesAndColors.swift; sourceTree = "<group>"; };
 		097B4CF11DBE467D00206D7E /* AutoLayoutActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutActions.swift; sourceTree = "<group>"; };
-		2B78B624A281C44EA3A5C602 /* Pods_SBAutoLayout_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SBAutoLayout_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* SBAutoLayout_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBAutoLayout_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,14 +58,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		9814D873785415DF2B00DE57 /* Pods_SBAutoLayout_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SBAutoLayout_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1A49FB9DAF983E7E9A4BBE7 /* Pods-SBAutoLayout_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SBAutoLayout_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SBAutoLayout_Example/Pods-SBAutoLayout_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		ACE1CC4076B755D927287F78 /* Pods-SBAutoLayout_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SBAutoLayout_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SBAutoLayout_Example/Pods-SBAutoLayout_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BEF8FC6735076F572D2BD961 /* SBAutoLayout.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SBAutoLayout.podspec; path = ../SBAutoLayout.podspec; sourceTree = "<group>"; };
-		C67803F0B48CEFFACE583C4C /* Pods-SBAutoLayout_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SBAutoLayout_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SBAutoLayout_Tests/Pods-SBAutoLayout_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		C791CD83BB7FF2C208F38834 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		CA696A69843F67D9EAFD30FC /* Pods-SBAutoLayout_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SBAutoLayout_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SBAutoLayout_Tests/Pods-SBAutoLayout_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D9BE3931630CC659925874A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		677F423C1F9F241200BBD071 /* SBAutoLayout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBAutoLayout.xcodeproj; path = ../SBAutoLayout/SBAutoLayout.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35BB68F7BCF002F323BA8CA /* Pods_SBAutoLayout_Example.framework in Frameworks */,
+				677F42461F9F242F00BBD071 /* SBAutoLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,12 +76,11 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				677F423C1F9F241200BBD071 /* SBAutoLayout.xcodeproj */,
 				607FACD21AFB9204008FA782 /* Example for SBAutoLayout */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				F25CF34BB0597CC2C1528B13 /* Pods */,
-				DDF731D202717B3B8C35A2F0 /* Frameworks */,
+				677F42451F9F242F00BBD071 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,34 +139,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+		677F423D1F9F241200BBD071 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BEF8FC6735076F572D2BD961 /* SBAutoLayout.podspec */,
-				C791CD83BB7FF2C208F38834 /* README.md */,
-				D9BE3931630CC659925874A1 /* LICENSE */,
+				677F42421F9F241200BBD071 /* SBAutoLayout.framework */,
+				677F42441F9F241200BBD071 /* SBAutoLayoutTests.xctest */,
 			);
-			name = "Podspec Metadata";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		DDF731D202717B3B8C35A2F0 /* Frameworks */ = {
+		677F42451F9F242F00BBD071 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2B78B624A281C44EA3A5C602 /* Pods_SBAutoLayout_Example.framework */,
-				9814D873785415DF2B00DE57 /* Pods_SBAutoLayout_Tests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F25CF34BB0597CC2C1528B13 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A1A49FB9DAF983E7E9A4BBE7 /* Pods-SBAutoLayout_Example.debug.xcconfig */,
-				ACE1CC4076B755D927287F78 /* Pods-SBAutoLayout_Example.release.xcconfig */,
-				CA696A69843F67D9EAFD30FC /* Pods-SBAutoLayout_Tests.debug.xcconfig */,
-				C67803F0B48CEFFACE583C4C /* Pods-SBAutoLayout_Tests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,12 +162,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SBAutoLayout_Example" */;
 			buildPhases = (
-				CE6765A78EB4890C9DD949F8 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				40F196CC5B995E4F0A7DC265 /* [CP] Embed Pods Frameworks */,
-				62537A7EEEA3BF33F7447E74 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,12 +202,35 @@
 			mainGroup = 607FACC71AFB9204008FA782;
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 677F423D1F9F241200BBD071 /* Products */;
+					ProjectRef = 677F423C1F9F241200BBD071 /* SBAutoLayout.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* SBAutoLayout_Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		677F42421F9F241200BBD071 /* SBAutoLayout.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SBAutoLayout.framework;
+			remoteRef = 677F42411F9F241200BBD071 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		677F42441F9F241200BBD071 /* SBAutoLayoutTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SBAutoLayoutTests.xctest;
+			remoteRef = 677F42431F9F241200BBD071 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		607FACCE1AFB9204008FA782 /* Resources */ = {
@@ -231,60 +245,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		40F196CC5B995E4F0A7DC265 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SBAutoLayout_Example/Pods-SBAutoLayout_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SBAutoLayout/SBAutoLayout.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBAutoLayout.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SBAutoLayout_Example/Pods-SBAutoLayout_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62537A7EEEA3BF33F7447E74 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SBAutoLayout_Example/Pods-SBAutoLayout_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE6765A78EB4890C9DD949F8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SBAutoLayout_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607FACCC1AFB9204008FA782 /* Sources */ = {
@@ -428,11 +388,11 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1A49FB9DAF983E7E9A4BBE7 /* Pods-SBAutoLayout_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SBAutoLayout/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -444,11 +404,11 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACE1CC4076B755D927287F78 /* Pods-SBAutoLayout_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SBAutoLayout/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
