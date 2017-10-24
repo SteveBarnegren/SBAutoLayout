@@ -6,7 +6,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SBAutoLayout"
-  s.version          = "1.2.0"
+  s.version          = "1.2.1"
   s.summary          = "Common auto layout operations with a single line of code"
 
   s.description      = <<-DESC
@@ -23,6 +23,6 @@ SBAutoLayout makes it easy to perform common auto layout operations without havi
   s.tvos.deployment_target = '9.0'
   s.osx.deployment_target = '10.12'
 
-  s.source_files = 'SBAutoLayout/**/*'
+  s.source_files = 'SBAutoLayout/SBAutoLayout/**/*'
  
 end
