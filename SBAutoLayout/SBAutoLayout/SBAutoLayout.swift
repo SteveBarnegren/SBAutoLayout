@@ -8,14 +8,14 @@
 
 import Foundation
 
-#if os(OSX)
-    import AppKit
-    public typealias UIView = NSView
-    public typealias UILayoutPriority = NSLayoutConstraint.Priority
-    public typealias UIEdgeInsets = NSEdgeInsets
-    public typealias NSLayoutAttribute = NSLayoutConstraint.Attribute
-#else
+#if canImport(UIKit)
     import UIKit
+#else
+  import AppKit
+  public typealias UIView = NSView
+  public typealias UILayoutPriority = NSLayoutConstraint.Priority
+  public typealias UIEdgeInsets = NSEdgeInsets
+  public typealias NSLayoutAttribute = NSLayoutConstraint.Attribute
 #endif
 
 extension UIView {
