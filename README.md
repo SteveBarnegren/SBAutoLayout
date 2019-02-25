@@ -6,8 +6,6 @@
 
 SBAutoLayout is an extension for UIView that makes it easy to perform common auto layout operations in Swift without having to write verbose auto layout syntax.
 
-Swift 3 is supported as of version 1.0.0
-
 ## A few examples
 
 Pin to superview center with height and width:
