@@ -418,7 +418,7 @@ extension UIView {
 
     // MARK:- Private
     
-    private func matchAttributeToSuperview(_ attribute: NSLayoutAttribute,
+    private func matchAttributeToSuperview(_ attribute: NSLayoutConstraint.Attribute,
                                            multiplier: CGFloat = 1,
                                            constant: CGFloat = 0,
                                            priority: UILayoutPriority? = nil,

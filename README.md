@@ -164,6 +164,10 @@ github "SteveBarnegren/SBAutolayout"
 
 Copy ```SBAutoLayout.swift``` in to your project
 
+##### Carthage
+
+Add `github "SteveBarnegren/SBAutoLayout` to your `Cartfile`
+
 ## Who?
 
 [@SteveBarnegren](https://twitter.com/stevebarnegren)
