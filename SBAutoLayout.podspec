@@ -22,6 +22,7 @@ SBAutoLayout makes it easy to perform common auto layout operations without havi
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
   s.osx.deployment_target = '10.12'
+  s.swift_version = '5.0'
 
   s.source_files = 'SBAutoLayout/SBAutoLayout/**/*.swift'
  
