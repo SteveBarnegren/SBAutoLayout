@@ -158,7 +158,7 @@ class ExampleCell: UICollectionViewCell {
         // Update label
         textPosition = item.textPosition
         label.text = item.text
-        label.superview?.bringSubview(toFront: label)
+        label.superview?.bringSubviewToFront(label)
         
         // Layout
         setNeedsLayout()

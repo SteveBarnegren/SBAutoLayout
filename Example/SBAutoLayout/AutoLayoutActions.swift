@@ -21,7 +21,7 @@ extension String {
             
             string = lines[0]
             
-            let padding = lines[0].components(separatedBy: "(")[0].characters.count + 1
+            let padding = lines[0].components(separatedBy: "(")[0].count + 1
             var paddingString = String();
             for _ in 0..<padding {
                 paddingString.append(" ")
