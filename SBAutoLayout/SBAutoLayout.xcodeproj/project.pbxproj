@@ -33,7 +33,7 @@
 		677F422C1F9F235700BBD071 /* SBAutoLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBAutoLayoutTests.swift; sourceTree = "<group>"; };
 		677F422E1F9F235700BBD071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		677F423A1F9F239300BBD071 /* SBAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBAutoLayout.swift; sourceTree = "<group>"; };
-		67E79C39248828D500EEC501 /* SBAutoLayout_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SBAutoLayout_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67E79C39248828D500EEC501 /* SBAutoLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SBAutoLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E79C3B248828D500EEC501 /* SBAutoLayout_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAutoLayout_macOS.h; sourceTree = "<group>"; };
 		67E79C3C248828D500EEC501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +79,7 @@
 			children = (
 				677F421E1F9F235700BBD071 /* SBAutoLayout.framework */,
 				677F42271F9F235700BBD071 /* SBAutoLayoutTests.xctest */,
-				67E79C39248828D500EEC501 /* SBAutoLayout_macOS.framework */,
+				67E79C39248828D500EEC501 /* SBAutoLayout.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			);
 			name = "SBAutoLayout-macOS";
 			productName = "SBAutoLayout-macOS";
-			productReference = 67E79C39248828D500EEC501 /* SBAutoLayout_macOS.framework */;
+			productReference = 67E79C39248828D500EEC501 /* SBAutoLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -502,7 +502,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "stevebarnegren.SBAutoLayout-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = SBAutoLayout;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -526,7 +526,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "stevebarnegren.SBAutoLayout-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = SBAutoLayout;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
