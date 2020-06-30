@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67E79C38248828D500EEC501"
-               BuildableName = "SBAutoLayout_macOS.framework"
+               BuildableName = "SBAutoLayout.framework"
                BlueprintName = "SBAutoLayout-macOS"
                ReferencedContainer = "container:SBAutoLayout.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "67E79C38248828D500EEC501"
-            BuildableName = "SBAutoLayout_macOS.framework"
+            BuildableName = "SBAutoLayout.framework"
             BlueprintName = "SBAutoLayout-macOS"
             ReferencedContainer = "container:SBAutoLayout.xcodeproj">
          </BuildableReference>

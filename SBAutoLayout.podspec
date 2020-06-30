@@ -6,7 +6,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SBAutoLayout"
-  s.version          = "1.3"
+  s.version          = "1.3.1"
   s.summary          = "Common auto layout operations with a single line of code"
 
   s.description      = <<-DESC
