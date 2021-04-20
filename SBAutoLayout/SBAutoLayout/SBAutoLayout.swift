@@ -138,6 +138,76 @@ extension UIView {
         return matchAttributeToSuperview(.trailing, constant: margin, priority: priority, invert: true)
     }
     
+    // MARK: - Pin to safe area
+    
+    @discardableResult public func pinToSafeAreaTop(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+
+        guard let superview = superview else { fatalError() }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .top,
+                                            relatedBy: .equal,
+                                            toItem: superview.safeAreaLayoutGuide,
+                                            attribute: .top,
+                                            multiplier: 1,
+                                            constant: margin)
+        superview.addConstraint(constraint)
+        
+        return constraint
+    }
+    
+    @discardableResult public func pinToSafeAreaRight(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+
+        guard let superview = superview else { fatalError() }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = NSLayoutConstraint(item: superview.safeAreaLayoutGuide,
+                                            attribute: .right,
+                                            relatedBy: .equal,
+                                            toItem: self,
+                                            attribute: .right,
+                                            multiplier: 1,
+                                            constant: margin)
+        superview.addConstraint(constraint)
+        
+        return constraint
+    }
+
+    @discardableResult public func pinToSafeAreaBottom(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+        
+        guard let superview = superview else { fatalError() }
+
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = NSLayoutConstraint(item: superview.safeAreaLayoutGuide,
+                                            attribute: .bottom,
+                                            relatedBy: .equal,
+                                            toItem: self,
+                                            attribute: .bottom,
+                                            multiplier: 1,
+                                            constant: margin)
+        superview.addConstraint(constraint)
+        
+        return constraint
+    }
+    
+    @discardableResult public func pinToSafeAreaLeft(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+        
+        guard let superview = superview else { fatalError() }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: .left,
+                                            relatedBy: .equal,
+                                            toItem: superview.safeAreaLayoutGuide,
+                                            attribute: .left,
+                                            multiplier: 1,
+                                            constant: margin)
+        superview.addConstraint(constraint)
+        
+        return constraint
+    }
+    
     // MARK: - Pin to superview as strip
     
     @discardableResult public func pinToSuperviewAsTopStrip(height: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]{

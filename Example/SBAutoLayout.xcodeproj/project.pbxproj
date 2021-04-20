@@ -38,6 +38,13 @@
 			remoteGlobalIDString = 677F42271F9F235700BBD071;
 			remoteInfo = SBAutoLayoutTests;
 		};
+		AAEE32EC262F6BCB007E971D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 677F423C1F9F241200BBD071 /* SBAutoLayout.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67E79C39248828D500EEC501;
+			remoteInfo = "SBAutoLayout-macOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +151,7 @@
 			children = (
 				677F42421F9F241200BBD071 /* SBAutoLayout.framework */,
 				677F42441F9F241200BBD071 /* SBAutoLayoutTests.xctest */,
+				AAEE32ED262F6BCB007E971D /* SBAutoLayout.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +236,13 @@
 			fileType = wrapper.cfbundle;
 			path = SBAutoLayoutTests.xctest;
 			remoteRef = 677F42431F9F241200BBD071 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AAEE32ED262F6BCB007E971D /* SBAutoLayout.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SBAutoLayout.framework;
+			remoteRef = AAEE32EC262F6BCB007E971D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -398,7 +413,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SBAutoLayout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -413,7 +428,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SBAutoLayout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
