@@ -135,11 +135,11 @@ struct PinToSuperviewTop : AutoLayoutAction {
 
     func name() -> String {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
-        return "\(viewName).pinToSuperviewTop(margin: \(margin))"
+        return "\(viewName).pinToSuperviewTop(\(margin))"
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewTop(margin: CGFloat(margin))
+        subviews[viewNum].pinToSuperviewTop(CGFloat(margin))
     }
 }
 
@@ -150,11 +150,11 @@ struct PinToSuperviewBottom : AutoLayoutAction {
     
     func name() -> String {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
-        return "\(viewName).pinToSuperviewBottom(margin: \(margin))"
+        return "\(viewName).pinToSuperviewBottom(\(margin))"
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewBottom(margin: CGFloat(margin))
+        subviews[viewNum].pinToSuperviewBottom(CGFloat(margin))
     }
 }
 
@@ -165,11 +165,11 @@ struct PinToSuperviewLeft : AutoLayoutAction {
     
     func name() -> String {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
-        return "\(viewName).pinToSuperviewLeft(margin: \(margin))"
+        return "\(viewName).pinToSuperviewLeft(\(margin))"
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewLeft(margin: CGFloat(margin))
+        subviews[viewNum].pinToSuperviewLeft(CGFloat(margin))
     }
 }
 
@@ -180,11 +180,11 @@ struct PinToSuperviewRight : AutoLayoutAction {
     
     func name() -> String {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
-        return "\(viewName).pinToSuperviewRight(margin: \(margin))"
+        return "\(viewName).pinToSuperviewRight(\(margin))"
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewRight(margin: CGFloat(margin))
+        subviews[viewNum].pinToSuperviewRight(CGFloat(margin))
     }
 }
 
@@ -195,11 +195,11 @@ struct PinToSuperviewLeading : AutoLayoutAction {
     
     func name() -> String {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
-        return "\(viewName).pinToSuperviewLeading(margin: \(margin))"
+        return "\(viewName).pinToSuperviewLeading(\(margin))"
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewLeading(margin: CGFloat(margin))
+        subviews[viewNum].pinToSuperviewLeading(CGFloat(margin))
     }
 }
 
@@ -210,11 +210,11 @@ struct PinToSuperviewTrailing : AutoLayoutAction {
     
     func name() -> String {
         let viewName = ViewNamesAndColors.nameForView(number: viewNum)
-        return "\(viewName).pinToSuperviewTrailing(margin: \(margin))"
+        return "\(viewName).pinToSuperviewTrailing(\(margin))"
     }
     
     func apply(superview: UIView, subviews: [UIView]) {
-        subviews[viewNum].pinToSuperviewTrailing(margin: CGFloat(margin))
+        subviews[viewNum].pinToSuperviewTrailing(CGFloat(margin))
     }
 }
 
