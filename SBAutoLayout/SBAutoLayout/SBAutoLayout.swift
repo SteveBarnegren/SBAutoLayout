@@ -140,7 +140,7 @@ extension UIView {
     
     // MARK: - Pin to safe area
     
-    @discardableResult public func pinToSafeAreaTop(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+    @discardableResult public func pinToSafeAreaTop(_ margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
 
         guard let superview = superview else { fatalError() }
         
@@ -152,12 +152,16 @@ extension UIView {
                                             attribute: .top,
                                             multiplier: 1,
                                             constant: margin)
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         superview.addConstraint(constraint)
         
         return constraint
     }
     
-    @discardableResult public func pinToSafeAreaRight(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+    @discardableResult public func pinToSafeAreaRight(_ margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
 
         guard let superview = superview else { fatalError() }
         
@@ -169,12 +173,17 @@ extension UIView {
                                             attribute: .right,
                                             multiplier: 1,
                                             constant: margin)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         superview.addConstraint(constraint)
         
         return constraint
     }
 
-    @discardableResult public func pinToSafeAreaBottom(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+    @discardableResult public func pinToSafeAreaBottom(_ margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
         
         guard let superview = superview else { fatalError() }
 
@@ -186,12 +195,17 @@ extension UIView {
                                             attribute: .bottom,
                                             multiplier: 1,
                                             constant: margin)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         superview.addConstraint(constraint)
         
         return constraint
     }
     
-    @discardableResult public func pinToSafeAreaLeft(_ margin: CGFloat = 0) -> NSLayoutConstraint {
+    @discardableResult public func pinToSafeAreaLeft(_ margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
         
         guard let superview = superview else { fatalError() }
         
@@ -203,6 +217,11 @@ extension UIView {
                                             attribute: .left,
                                             multiplier: 1,
                                             constant: margin)
+        
+        if let priority = priority {
+            constraint.priority = priority
+        }
+        
         superview.addConstraint(constraint)
         
         return constraint
