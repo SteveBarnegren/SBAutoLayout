@@ -28,10 +28,10 @@ view.pinToSuperviewAsTopStrip(height: 50)
 All methods return generated constraints. Handy for if you need to remove or change them later. 
 
 ```
-let topConstraint = view.pinToSuperviewTop(margin: 60)
-view.pinToSuperviewBottom(margin: 40)
-view.pinToSuperviewLeading(margin: 15)
-view.pinToSuperviewTrailing(margin: 15)
+let topConstraint = view.pinToSuperviewTop(60)
+view.pinToSuperviewBottom(40)
+view.pinToSuperviewLeading(15)
+view.pinToSuperviewTrailing(15)
 
 // ...Later
 topConstraint.constant = 30
@@ -58,98 +58,110 @@ orangeView.pinAboveView(blueView, separation: 10)
 **Pin width / height**
 
 ```
-func pinWidth(_ width: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinWidth(_ width: CGFloat)  
+  
+func pinHeight(_ height: CGFloat)
     
-func pinHeight(_ height: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
-    
-func pinAspectRatio(width: CGFloat, height: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinAspectRatio(width: CGFloat, height: CGFloat)
 ```
 
 **Pin to superview edges**
 
 ```    
-func pinToSuperviewEdges(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewEdges()
     
-func pinToSuperviewEdges(top: CGFloat, bottom: CGFloat, leading: CGFloat, trailing: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewEdges(top: CGFloat, bottom: CGFloat, leading: CGFloat, trailing: CGFloat)
     
-func pinToSuperviewEdges(insets: UIEdgeInsets, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewEdges(insets: UIEdgeInsets)
    
     
-func pinToSuperviewTop(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewTop(_ margin: CGFloat)
     
-func pinToSuperviewBottom(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewBottom(_ margin: CGFloat)
     
-func pinToSuperviewLeft(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewLeft(_ margin: CGFloat)
     
-func pinToSuperviewRight(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewRight(_ margin: CGFloat)
     
-func pinToSuperviewLeading(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewLeading(_ margin: CGFloat)
     
-func pinToSuperviewTrailing(margin: CGFloat, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewTrailing(_ margin: CGFloat)
+```
+
+**Pin to safe area**
+
+```
+func pinToSafeAreaTop(_ margin: CGFloat = 0)
+
+func pinToSafeAreaRight(_ margin: CGFloat = 0)
+
+func pinToSafeAreaBottom(_ margin: CGFloat = 0)
+
+func pinToSafeAreaLeft(_ margin: CGFloat = 0)
 ```
 
 **Pin to superview as strip**
 
 ```   
-func pinToSuperviewAsTopStrip(height: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewAsTopStrip(height: CGFloat)
     
-func pinToSuperviewAsBottomStrip(height: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewAsBottomStrip(height: CGFloat)
     
-func pinToSuperviewAsLeftStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewAsLeftStrip(width: CGFloat)
     
-func pinToSuperviewAsRightStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewAsRightStrip(width: CGFloat)
     
-func pinToSuperviewAsLeadingStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewAsLeadingStrip(width: CGFloat)
 
-func pinToSuperviewAsTrailingStrip(width: CGFloat, priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]
+func pinToSuperviewAsTrailingStrip(width: CGFloat)
 ```
 
 **Pin to superview center**
 
 ```
-func pinToSuperviewCenterX(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewCenterX(offset: CGFloat = 0)
     
-func pinToSuperviewCenterY(offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToSuperviewCenterY(offset: CGFloat = 0)
     
-func pinToSuperviewCenter(priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]    // MARK:- Pin to other views
+func pinToSuperviewCenter()
 ```
 
 **Pin above / below other views**
 
 ```
-func pinAboveView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinAboveView(_ otherView: UIView, separation: CGFloat = 0)
     
-func pinBelowView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinBelowView(_ otherView: UIView, separation: CGFloat = 0)
 ```
 
 **Pin to left / right / leading / trailing other views**
 
 ``` 
-func pinToLeftOfView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToLeftOfView(_ otherView: UIView, separation: CGFloat = 0)
     
-func pinToRightOfView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinToRightOfView(_ otherView: UIView, separation: CGFloat = 0)
     
-func pinTrailingFromView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinTrailingFromView(_ otherView: UIView, separation: CGFloat = 0)
     
-func pinLeadingToView(_ otherView: UIView, separation: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinLeadingToView(_ otherView: UIView, separation: CGFloat = 0)
 ```    
    
 **Match width / height of other views**  
     
 ```
-func pinWidthToSameAsView(_ otherView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinWidthToSameAsView(_ otherView: UIView)
     
-func pinHeightToSameAsView(_ otherView: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint
+func pinHeightToSameAsView(_ otherView: UIView)
 ```
 
 ## Installation
 
-#### CocoaPods
+#### Swift Package Manager
 
-Add the following line to your `Podfile`:
-
-```ruby
-pod "SBAutoLayout"
+```swift
+dependencies: [
+    .package(url: "https://github.com/SteveBarnegren/SBAutoLayout.git")
+]
 ```
 
 #### Carthage
@@ -160,13 +172,14 @@ Add the following line to your `Cartfile`:
 github "SteveBarnegren/SBAutolayout"
 ```
 
+#### CocoaPods
+
+Cocoapods is no longer supported.
+
 #### Manual
 
 Copy ```SBAutoLayout.swift``` in to your project
 
-##### Carthage
-
-Add `github "SteveBarnegren/SBAutoLayout` to your `Cartfile`
 
 ## Who?
 
